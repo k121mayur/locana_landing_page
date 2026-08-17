@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" fill="none">
+  <!-- Locana Iris & Network Emblem -->
+  <g transform="translate(4, 4)">
+    <rect width="48" height="48" rx="12" fill="#0B2B20"/>
+    
+    <!-- Outer Precision Ring (Telemetry) -->
+    <circle cx="24" cy="24" r="16" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" stroke-dasharray="2 3"/>
+    
+    <!-- Dynamic Iris Arcs (Botanical Emerald & Ochre) -->
+    <path d="M12 24C12 17.3726 17.3726 12 24 12C30.6274 12 36 17.3726 36 24" stroke="#259368" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M36 24C36 30.6274 30.6274 36 24 36C17.3726 36 12 30.6274 12 24" stroke="#E58A1F" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Connected Network Nodes -->
+    <circle cx="24" cy="12" r="2.5" fill="#259368"/>
+    <circle cx="36" cy="24" r="2.5" fill="#E58A1F"/>
+    <circle cx="24" cy="36" r="2.5" fill="#259368"/>
+    <circle cx="12" cy="24" r="2.5" fill="#E58A1F"/>
+    
+    <!-- Central Ground Truth Core -->
+    <circle cx="24" cy="24" r="4.5" fill="#FFFFFF"/>
+    <circle cx="24" cy="24" r="2" fill="#0B2B20"/>
+  </g>
+  
+  <!-- Wordmark -->
+  <text x="64" y="32" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" letter-spacing="-0.03em" fill="#09261D">LOCANA</text>
+  <text x="65" y="44" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" letter-spacing="0.12em" fill="#1A6B4E">GROUND TRUTH NETWORK</text>
+</svg>

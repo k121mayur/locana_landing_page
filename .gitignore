@@ -1,0 +1,9 @@
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Scratch & Extraction
+extracted_media/
+extracted_profile.txt
