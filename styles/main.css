@@ -55,11 +55,19 @@
   /* Typography Colors */
   --text-title: #0F172A;
   --text-body: #334155;
+  --text-secondary: #475569;
   --text-muted: #64748B;
   --text-light: #94A3B8;
   --text-inverse: #F8FAFC;
+  --ink-900: #0F172A;
+
+  /* Aliases & Highlights */
+  --ochre-600: #D97706;
+  --surface-white: #FFFFFF;
+  --canvas-subtle: #F1F5F9;
 
   /* Hairlines & Borders */
+  --border-hairline: #E2E8F0;
   --border-subtle: rgba(15, 23, 42, 0.06);
   --border-light: #E2E8F0;
   --border-medium: #CBD5E1;
@@ -565,8 +573,8 @@ h1, h2, h3, h4, h5, h6 {
 .telemetry-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-top: -3rem;
+  gap: 1.75rem;
+  margin-top: -3.5rem;
   position: relative;
   z-index: 10;
 }
@@ -575,11 +583,14 @@ h1, h2, h3, h4, h5, h6 {
   background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
-  padding: 2rem 1.75rem;
+  padding: 2.25rem 2rem;
   box-shadow: var(--shadow-card);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .stat-card:hover {
@@ -603,12 +614,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .stat-number {
   font-family: var(--font-display);
-  font-size: 2.75rem;
+  font-size: 3rem;
   font-weight: 800;
   color: var(--slate-900);
   line-height: 1;
   letter-spacing: -0.04em;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.75rem;
 }
 
 .stat-card.stat-emerald .stat-number { color: var(--emerald-600); }
@@ -618,30 +629,24 @@ h1, h2, h3, h4, h5, h6 {
 .stat-label {
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--slate-800);
-  line-height: 1.35;
-  margin-bottom: 0.25rem;
-}
-
-.stat-desc {
-  font-size: 0.8125rem;
-  color: var(--slate-500);
+  color: var(--slate-700);
+  line-height: 1.4;
 }
 
 /* ==========================================================================
-   Six Service Verticals (Spacious & Clean Cards)
+   Six Service Verticals (Spacious, Tag-Free & Clean Cards)
    ========================================================================== */
 .verticals-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 2.25rem;
 }
 
 .vertical-card {
   background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
-  padding: 2.5rem 2rem;
+  padding: 2.75rem 2.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -657,15 +662,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .vertical-icon-box {
-  width: 56px;
-  height: 56px;
+  width: 54px;
+  height: 54px;
   border-radius: var(--radius-md);
   background: var(--blue-50);
   color: var(--blue-600);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
   border: 1px solid var(--blue-100);
 }
 
@@ -682,28 +687,25 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--emerald-100);
 }
 
-.vertical-subtopics {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--blue-600);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
+.vertical-card:nth-child(5) .vertical-icon-box,
+.vertical-card:nth-child(6) .vertical-icon-box {
+  background: var(--amber-50);
+  color: var(--amber-600);
+  border-color: var(--amber-100);
 }
 
 .vertical-title {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--slate-900);
   margin-bottom: 0.85rem;
-  line-height: 1.25;
+  line-height: 1.3;
 }
 
 .vertical-desc {
   font-size: 0.9375rem;
   color: var(--slate-600);
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 2rem;
 }
 
@@ -723,20 +725,42 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.75rem;
 }
 
+/* Feature Check List */
+.feature-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.feature-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--slate-700);
+}
+
+.feature-checklist li svg {
+  flex-shrink: 0;
+}
+
 /* ==========================================================================
-   Quality Architecture (Visual 6-Pillar Matrix)
+   Quality Architecture (Visual 6-Pillar Clean Matrix)
    ========================================================================== */
 .quality-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
+  gap: 2rem;
 }
 
 .quality-card {
   background: #FFFFFF;
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 2.25rem 1.75rem;
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
   box-shadow: var(--shadow-subtle);
   transition: all var(--transition-fast);
 }
@@ -744,13 +768,14 @@ h1, h2, h3, h4, h5, h6 {
 .quality-card:hover {
   border-color: var(--blue-500);
   box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
 }
 
 .quality-header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .quality-num {
@@ -758,35 +783,39 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.8125rem;
   font-weight: 700;
   color: var(--blue-600);
+  background: var(--blue-50);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-xs);
+  letter-spacing: 0.05em;
 }
 
 .quality-heading {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--slate-900);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.5rem;
 }
 
 .quality-text {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--slate-600);
   line-height: 1.6;
 }
 
 /* ==========================================================================
-   Side-by-Side Comparison (Clean Cards, Not Text Grids)
+   Side-by-Side Comparison (Clean Minimalist Cards)
    ========================================================================== */
 .matrix-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 2.25rem;
 }
 
 .matrix-card {
   background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
-  padding: 2.5rem;
+  padding: 2.75rem 2.25rem;
 }
 
 .matrix-card.featured {
@@ -799,8 +828,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -808,15 +837,15 @@ h1, h2, h3, h4, h5, h6 {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .matrix-list li {
   display: flex;
   align-items: flex-start;
-  gap: 0.85rem;
+  gap: 0.75rem;
   font-size: 0.9375rem;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--slate-700);
 }
 
