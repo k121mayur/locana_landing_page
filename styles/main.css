@@ -989,9 +989,1039 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
+   Hero Section Layout (Optimized Spacing)
+   ========================================================================== */
+.hero-section {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2rem, 3.5vw, 2.75rem);
+  position: relative;
+  background: radial-gradient(circle at 10% 10%, rgba(219, 234, 254, 0.5) 0%, rgba(248, 250, 252, 0) 50%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.hero-media-wrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-floating);
+  border: 1px solid var(--border-light);
+  background-color: var(--slate-900);
+}
+
+.hero-media-wrapper img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.hero-media-wrapper:hover img {
+  transform: scale(1.02);
+}
+
+.hero-badge-overlay {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  background: rgba(10, 15, 29, 0.85);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   Revamped Landing Page Flow Styles (Exact Flow Match)
+   ========================================================================== */
+
+/* 1. Hero Motto Box & India Visual */
+.hero-brand-tag {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+  margin-bottom: 0.5rem;
+}
+
+.hero-callout-motto {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(5, 150, 105, 0.08));
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  border-left: 4px solid var(--blue-600);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--slate-900);
+  margin: 1rem 0 1.75rem 0;
+}
+
+.hero-network-stats-row {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+  flex-wrap: wrap;
+}
+
+.hero-stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--slate-600);
+  font-weight: 500;
+}
+
+.hero-stat-pill strong {
+  color: var(--slate-900);
+  font-weight: 700;
+}
+
+/* 2. The Last-Mile Challenge Section (Tight Spacing & Aesthetic Pipeline) */
+.challenge-section-tight {
+  padding-top: clamp(2rem, 3.5vw, 3rem);
+  padding-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.challenge-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.challenge-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--amber-500);
+  opacity: 0.8;
+}
+
+.challenge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--amber-500);
+}
+
+.challenge-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--amber-50);
+  color: var(--amber-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.85rem auto;
+}
+
+.challenge-title {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 0.35rem;
+}
+
+.challenge-desc {
+  font-size: 0.8125rem;
+  color: var(--slate-600);
+  line-height: 1.45;
+}
+
+/* Redesigned Aesthetic Pipeline: Flow Card System */
+.transformation-pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.pipeline-step-bridge {
+  background: linear-gradient(135deg, #0A0F1D, #1E293B);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-floating);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pipeline-step-bridge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--blue-600);
+}
+
+.pipeline-bridge-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.pipeline-bridge-info p {
+  font-size: 0.9375rem;
+  color: rgba(248, 250, 252, 0.8);
+  line-height: 1.6;
+}
+
+.pipeline-features-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pipeline-feature-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: #FFFFFF;
+}
+
+.pipeline-feature-pill svg {
+  color: var(--emerald-400);
+  flex-shrink: 0;
+}
+
+.pipeline-connector-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--blue-600);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pipeline-connector-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--blue-100);
+  color: var(--blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  animation: bounceDown 2s infinite ease-in-out;
+}
+
+.pipeline-outcome-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-top: 4px solid var(--emerald-600);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.pipeline-outcome-header {
+  border-right: 1px solid var(--border-light);
+  padding-right: 1.5rem;
+}
+
+.pipeline-outcome-header h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--slate-900);
+  margin-top: 0.35rem;
+}
+
+.pipeline-outcome-triad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.pipeline-triad-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pipeline-triad-item strong {
+  font-size: 0.9375rem;
+  color: var(--emerald-600);
+  font-weight: 700;
+}
+
+.pipeline-triad-item span {
+  font-size: 0.8125rem;
+  color: var(--slate-600);
+  line-height: 1.45;
+}
+
+/* 3. 7-Part Interactive Wheel Platform Section */
+.wheel-section {
+  background: var(--canvas-bg);
+}
+
+.wheel-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.wheel-graphic-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+}
+
+.wheel-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  cursor: pointer;
+  filter: drop-shadow(0 10px 25px rgba(15, 23, 42, 0.08));
+}
+
+.wheel-slice {
+  transition: all var(--transition-smooth);
+  stroke: #FFFFFF;
+  stroke-width: 3;
+  cursor: pointer;
+}
+
+.wheel-slice:hover {
+  filter: brightness(1.15);
+  transform-origin: 200px 200px;
+}
+
+.wheel-slice.active {
+  filter: brightness(1.25) drop-shadow(0 0 12px rgba(37, 99, 235, 0.5));
+  stroke: #FFFFFF;
+  stroke-width: 4;
+}
+
+.wheel-center-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  border: 4px solid var(--slate-100);
+}
+
+.wheel-center-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: var(--blue-600);
+  letter-spacing: -0.02em;
+}
+
+.wheel-center-tag {
+  font-size: 0.6875rem;
+  color: var(--slate-500);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.wheel-nav-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.wheel-chip {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  color: var(--slate-700);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.wheel-chip:hover {
+  border-color: var(--blue-500);
+  color: var(--blue-600);
+  background: var(--blue-50);
+}
+
+.wheel-chip.active {
+  background: var(--blue-600);
+  border-color: var(--blue-600);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.wheel-details-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 2.75rem);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-smooth);
+}
+
+.wheel-details-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.wheel-details-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--slate-900);
+  margin-bottom: 0.75rem;
+}
+
+.wheel-details-desc {
+  font-size: 1rem;
+  color: var(--slate-600);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.wheel-capabilities-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.wheel-capabilities-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--slate-700);
+}
+
+.wheel-capabilities-list li svg {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* 4. Two-Sided Network Conduit: Who We Connect -> Locana -> Who We Reach */
+.conduit-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr 1.15fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.conduit-column {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.conduit-header-block {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.conduit-header-block .badge {
+  margin-bottom: 0.5rem;
+}
+
+.conduit-header-block h3 {
+  font-size: 1.35rem;
+  color: var(--slate-900);
+  font-weight: 700;
+}
+
+.conduit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  flex-grow: 1;
+}
+
+.conduit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.conduit-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-xs);
+  background: var(--blue-50);
+  color: var(--blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.conduit-item-text strong {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--slate-900);
+  line-height: 1.3;
+  margin-bottom: 0.15rem;
+}
+
+.conduit-item-text span {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--slate-500);
+  line-height: 1.4;
+}
+
+.conduit-center-node {
+  background: linear-gradient(145deg, #0A0F1D, #111827);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 1.75rem;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: var(--shadow-floating);
+  position: relative;
+}
+
+.conduit-center-node::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.5), rgba(5, 150, 105, 0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.conduit-center-logo {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0.5rem 0 0.25rem 0;
+  letter-spacing: -0.02em;
+}
+
+.conduit-center-sub {
+  font-size: 0.8125rem;
+  color: rgba(248, 250, 252, 0.7);
+  line-height: 1.45;
+  margin-bottom: 1.5rem;
+}
+
+.conduit-features-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1rem;
+  margin-bottom: 1.75rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.conduit-feature-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.8125rem;
+  color: rgba(248, 250, 252, 0.9);
+}
+
+/* 5. One Network. Multiple Services (8 Verticals Grid) */
+.services-grid-8 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.service-tile-v2 {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
+}
+
+.service-tile-v2:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--blue-500);
+}
+
+.service-tile-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: var(--blue-50);
+  color: var(--blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.service-tile-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 0.5rem;
+}
+
+.service-tile-desc {
+  font-size: 0.875rem;
+  color: var(--slate-600);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+.service-tile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--blue-600);
+  transition: gap var(--transition-fast);
+}
+
+.service-tile-link:hover {
+  gap: 0.6rem;
+}
+
+/* 6. How Locana Works 6-Step Workflow */
+.workflow-track {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.25rem;
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.step-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.25rem;
+  position: relative;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--blue-600);
+}
+
+.step-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blue-600);
+  background: var(--blue-50);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 0.5rem;
+}
+
+.step-desc {
+  font-size: 0.8125rem;
+  color: var(--slate-600);
+  line-height: 1.5;
+}
+
+.workflow-impact-banner {
+  background: linear-gradient(135deg, #064e3b, #047857);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 2rem;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.workflow-impact-text {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.workflow-impact-text h4 {
+  font-size: 1.25rem;
+  color: #FFFFFF;
+}
+
+/* 7. Locana Local Node Formula */
+.node-formula-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.formula-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
+  position: relative;
+}
+
+.formula-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--blue-600);
+}
+
+.formula-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blue-50);
+  color: var(--blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+}
+
+.formula-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 0.5rem;
+}
+
+.formula-desc {
+  font-size: 0.8125rem;
+  color: var(--slate-600);
+  line-height: 1.5;
+}
+
+.formula-summary-banner {
+  background: var(--slate-900);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  color: #FFFFFF;
+  text-align: center;
+  border: 1px solid var(--border-dark);
+}
+
+/* 8. Why Organisations Trust Us */
+.trust-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+
+.trust-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.25rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
+}
+
+.trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--emerald-500);
+}
+
+.trust-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--emerald-50);
+  color: var(--emerald-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.trust-title {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 0.5rem;
+}
+
+.trust-desc {
+  font-size: 0.8125rem;
+  color: var(--slate-600);
+  line-height: 1.5;
+}
+
+/* 9. Locana By The Numbers Grid */
+.numbers-grid-v2 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.25rem;
+}
+
+.number-card-v2 {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-fast);
+}
+
+.number-card-v2:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--blue-600);
+}
+
+.number-val {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--blue-600);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.number-label {
+  font-size: 0.8125rem;
+  color: var(--slate-600);
+  font-weight: 600;
+}
+
+/* 10. Our Impact Trio */
+.impact-trio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.impact-trio-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.impact-trio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--blue-600);
+}
+
+.impact-trio-card.emerald::before { background: var(--emerald-600); }
+.impact-trio-card.amber::before { background: var(--amber-600); }
+
+.impact-trio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.impact-trio-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.impact-trio-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--slate-900);
+  margin-bottom: 0.75rem;
+}
+
+.impact-trio-desc {
+  font-size: 0.9375rem;
+  color: var(--slate-600);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.impact-trio-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.impact-trio-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--slate-700);
+}
+
+/* ==========================================================================
    Responsive Rules
    ========================================================================== */
+@media (max-width: 1200px) {
+  .services-grid-8 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .workflow-track {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .numbers-grid-v2 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
+  .wheel-layout {
+    grid-template-columns: 1fr;
+  }
+  .challenge-grid, .trust-grid-5, .node-formula-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pipeline-step-bridge {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem;
+  }
+  .pipeline-outcome-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  .pipeline-outcome-header {
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
+  .conduit-grid {
+    grid-template-columns: 1fr;
+  }
+  .impact-trio-grid {
+    grid-template-columns: 1fr;
+  }
   .telemetry-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1023,6 +2053,13 @@ h1, h2, h3, h4, h5, h6 {
   }
   .mobile-menu-toggle {
     display: block;
+  }
+  .challenge-grid, .trust-grid-5, .node-formula-grid, .services-grid-8, .workflow-track, .numbers-grid-v2 {
+    grid-template-columns: 1fr;
+  }
+  .pipeline-outcome-triad {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
   .telemetry-grid {
     grid-template-columns: 1fr;
