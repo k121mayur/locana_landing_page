@@ -1647,6 +1647,284 @@ h6 {
   color: var(--blue-600);
 }
 
+/* ==========================================================================
+   ArcCardCarousel — Framer Component Integration
+   Infinite 3D Arc Card Carousel with Directional Y-Tilt & Physics
+   ========================================================================== */
+.arc-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.arc-carousel-container {
+  position: relative;
+  width: 100%;
+  height: 640px;
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(37, 99, 235, 0.04) 0%, rgba(248, 250, 252, 0) 70%);
+  perspective: 1400px;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.arc-carousel-container:active {
+  cursor: grabbing;
+}
+
+.arc-carousel-stage {
+  position: absolute;
+  left: 50%;
+  top: 1635px; /* dynamically positioned in JS to arcOffset + radius */
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.arc-card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arc-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 16px 36px -12px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.04);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.arc-card:hover .arc-card-inner {
+  transform: translateY(-4px);
+  border-color: var(--card-accent, #2563EB);
+  box-shadow: 0 24px 48px -12px rgba(15, 23, 42, 0.2), 0 0 0 1.5px var(--card-accent, #2563EB);
+}
+
+.arc-card.active .arc-card-inner {
+  border-color: var(--card-accent, #2563EB);
+  box-shadow: 0 28px 56px -12px rgba(15, 23, 42, 0.22), 0 0 0 2px var(--card-accent, #2563EB), 0 0 30px rgba(37, 99, 235, 0.15);
+}
+
+.arc-card-media-wrap {
+  position: relative;
+  width: 100%;
+  height: 52%;
+  overflow: hidden;
+  background: var(--slate-100);
+}
+
+.arc-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arc-card:hover .arc-card-img {
+  transform: scale(1.05);
+}
+
+.arc-card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.05) 0%, rgba(15, 23, 42, 0.6) 100%);
+  pointer-events: none;
+}
+
+.arc-card-badge-row {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.arc-card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.arc-card-num-chip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.arc-card-content {
+  padding: 1rem 1.15rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-start;
+  background: #FFFFFF;
+}
+
+.arc-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+}
+
+.arc-card-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.arc-card-code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.arc-card-desc {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--slate-600);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Nav chevron buttons */
+.arc-nav-btn {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border-light);
+  color: var(--slate-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 25;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+}
+
+.arc-nav-btn:hover {
+  background: #FFFFFF;
+  color: var(--blue-600);
+  border-color: var(--blue-500);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+}
+
+.arc-nav-prev {
+  left: 20px;
+}
+
+.arc-nav-next {
+  right: 20px;
+}
+
+/* Bottom footer of carousel */
+.arc-carousel-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+  pointer-events: none;
+  text-align: center;
+  z-index: 10;
+}
+
+.arc-carousel-drag-hint {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--slate-500);
+  letter-spacing: -0.01em;
+}
+
+.arc-carousel-eyebrow {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--slate-800);
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .arc-carousel-container {
+    height: 560px;
+  }
+  .arc-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+  .arc-nav-prev {
+    left: 8px;
+  }
+  .arc-nav-next {
+    right: 8px;
+  }
+  .arc-carousel-drag-hint {
+    font-size: 0.8125rem;
+  }
+  .arc-carousel-eyebrow {
+    font-size: 0.9375rem;
+  }
+}
+
 .wheel-nav-chips {
   display: flex;
   flex-wrap: wrap;
@@ -2080,7 +2358,28 @@ h6 {
   color: #FFFFFF;
 }
 
-/* 7. Locana Local Node — FilamentFlower Canvas Stage & Orbital Formula Cards */
+/* 7. Locana Platform — FilamentFlower Canvas Stage in 2-Column Wheel Layout */
+.platform-flower-container {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  height: 520px;
+  margin: 0 auto;
+  user-select: none;
+  touch-action: pan-y;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.platform-flower-container .filament-flower-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .local-node-stage {
   position: relative;
   width: 100%;
@@ -2096,12 +2395,24 @@ h6 {
 .filament-flower-wrap {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 520px;
   border-radius: var(--radius-lg);
   overflow: visible;
   touch-action: pan-y;
   user-select: none;
   background: transparent;
+}
+
+@media (max-width: 1024px) {
+  .platform-flower-container {
+    height: 480px;
+  }
+}
+
+@media (max-width: 640px) {
+  .platform-flower-container {
+    height: 400px;
+  }
 }
 
 #filament-flower-canvas {
@@ -2325,9 +2636,9 @@ h6 {
   text-align: left;
 }
 
-/* Intelligent Outward Popover Positioning - Points away from center, preventing any overlap */
+/* Intelligent Outward Popover Positioning - Points away from center, preventing any overlap (7 Pillars) */
 .node-orbit-item[data-node="0"] .node-hover-card {
-  bottom: calc(100% + 8px);
+  bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%) translateY(4px);
 }
@@ -2342,8 +2653,8 @@ h6 {
 
 .node-orbit-item[data-node="1"] .node-hover-card {
   left: calc(100% + 10px);
-  top: 50%;
-  transform: translateY(-50%) translateX(-4px);
+  bottom: -15px;
+  transform: translateY(0) translateX(-4px);
 }
 
 .node-orbit-item[data-node="1"]:hover .node-hover-card,
@@ -2351,7 +2662,7 @@ h6 {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateY(-50%) translateX(0);
+  transform: translateY(0) translateX(0);
 }
 
 .node-orbit-item[data-node="2"] .node-hover-card {
@@ -2369,9 +2680,9 @@ h6 {
 }
 
 .node-orbit-item[data-node="3"] .node-hover-card {
-  right: calc(100% + 10px);
-  top: 50%;
-  transform: translateY(-50%) translateX(4px);
+  left: calc(100% + 10px);
+  top: -15px;
+  transform: translateY(0) translateX(-4px);
 }
 
 .node-orbit-item[data-node="3"]:hover .node-hover-card,
@@ -2379,13 +2690,13 @@ h6 {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateY(-50%) translateX(0);
+  transform: translateY(0) translateX(0);
 }
 
 .node-orbit-item[data-node="4"] .node-hover-card {
   right: calc(100% + 10px);
-  top: 50%;
-  transform: translateY(-50%) translateX(4px);
+  top: -15px;
+  transform: translateY(0) translateX(4px);
 }
 
 .node-orbit-item[data-node="4"]:hover .node-hover-card,
@@ -2393,7 +2704,103 @@ h6 {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  transform: translateY(0) translateX(0);
+}
+
+.node-orbit-item[data-node="5"] .node-hover-card {
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+}
+
+.node-orbit-item[data-node="5"]:hover .node-hover-card,
+.node-orbit-item[data-node="5"].active .node-hover-card {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   transform: translateY(-50%) translateX(0);
+}
+
+.node-orbit-item[data-node="6"] .node-hover-card {
+  right: calc(100% + 10px);
+  bottom: -15px;
+  transform: translateY(0) translateX(4px);
+}
+
+.node-orbit-item[data-node="6"]:hover .node-hover-card,
+.node-orbit-item[data-node="6"].active .node-hover-card {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) translateX(0);
+}
+
+/* Ground Truth 6-Step Field Protocol Spotlight */
+.gt-protocol-spotlight {
+  margin-top: 2.5rem;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+}
+
+.gt-spotlight-header {
+  margin-bottom: 1.25rem;
+}
+
+.gt-spotlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blue-600);
+  background: var(--blue-50);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.5rem;
+}
+
+.gt-spotlight-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 0.35rem;
+}
+
+.gt-spotlight-desc {
+  font-size: 0.875rem;
+  color: var(--slate-600);
+  max-width: 780px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.gt-steps-grid-full {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .gt-steps-grid-full {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .gt-steps-grid-full {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+  
+  .gt-protocol-spotlight {
+    padding: 1.25rem;
+  }
 }
 
 /* Small Card Content */

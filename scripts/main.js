@@ -2,14 +2,18 @@
  * LOCANA — Core UI & Interaction Controller
  */
 
+/**
+ * LOCANA — Core UI & Interaction Controller
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initMobileDrawer();
   initScrollReveal();
   initCounterUp();
   initFaqAccordion();
-  initPlatformWheel();
-  initFilamentFlowerNode();
+  initPlatformFilamentFlower();
+  initArcCardCarousel();
   initSmoothScroll();
 });
 
@@ -154,24 +158,27 @@ function initFaqAccordion() {
 }
 
 /* ==========================================================================
-   7-Part Interactive 3D Orbit Carousel Platform
-   Ground Truth • Elevate • Sage • Roots • Reach • Connect • Access
+   4. Locana Platform — FilamentFlower Canvas & 7 Orbital Pillars
+   Based on Framer Filamentflower (AHkv5e)
    ========================================================================== */
-function initPlatformWheel() {
-  const container = document.getElementById('orbit-platform-container');
-  const spinner = document.getElementById('orbit-spinner');
-  const cameraEl = document.getElementById('orbit-camera');
-  const tiltEl = document.getElementById('orbit-tilt');
-  const chips = document.querySelectorAll('.wheel-chip');
-  const badgeTextEl = document.getElementById('pillar-badge-text');
-  const badgeEl = document.getElementById('pillar-badge');
-  const titleEl = document.getElementById('pillar-title');
-  const descEl = document.getElementById('pillar-desc');
-  const capabilitiesEl = document.getElementById('pillar-capabilities');
+function initPlatformFilamentFlower() {
+  const wrap = document.getElementById('platform-flower-wrap');
+  const canvas = document.getElementById('platform-flower-canvas');
+  const trackEl = document.getElementById('platform-orbit-track');
+  const orbitItems = document.querySelectorAll('#platform-orbit-items .node-orbit-item');
+  const chips = document.querySelectorAll('#platform-chips-container .wheel-chip');
+  const badgeTextEl = document.getElementById('platform-badge-text');
+  const badgeEl = document.getElementById('platform-badge');
+  const titleEl = document.getElementById('platform-title');
+  const descEl = document.getElementById('platform-desc');
+  const capabilitiesEl = document.getElementById('platform-capabilities');
 
-  if (!container || !spinner) return;
+  if (!wrap || !canvas) return;
 
-  const pillars = [
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const platformPillars = [
     {
       key: 'ground-truth',
       num: '01',
@@ -179,10 +186,6 @@ function initPlatformWheel() {
       badgeClass: 'badge-blue',
       strokeColor: '#2563EB',
       title: 'HOW GROUND TRUTHING WORKS?',
-      cardTitle: 'HOW GROUND TRUTHING WORKS?',
-      category: 'Verification',
-      tag: '6-Step Field Protocol',
-      iconSvg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>',
       desc: 'A seamless 6-step verification lifecycle transforming complex institutional requirements into auditable primary ground intelligence.',
       steps: [
         { num: '01', name: 'Post', desc: 'Institution submits target geography, sample quotas, protocol guidelines & timelines.' },
@@ -191,11 +194,6 @@ function initPlatformWheel() {
         { num: '04', name: 'Execute', desc: 'Local researchers conduct field tasks with 100% FPIC consent & live GPS telemetry logging.' },
         { num: '05', name: 'Verify', desc: 'Automated logic checks, cryptographic timestamp hashes & mandatory 10% supervisor back-checks.' },
         { num: '06', name: 'Pay', desc: 'Instant, transparent payouts directly to certified local field professionals upon QC clearance.' }
-      ],
-      capabilities: [
-        'Zero-curbstoning guarantee with cryptographic timestamp hashes',
-        'Real-time district quota tracking & velocity anomaly filters',
-        'Donor-grade datasets ready for econometric STATA/R modeling'
       ]
     },
     {
@@ -205,9 +203,6 @@ function initPlatformWheel() {
       badgeClass: 'badge-emerald',
       strokeColor: '#059669',
       title: 'Elevate',
-      category: 'Skilling',
-      tag: '6-Tier Credentialing',
-      iconSvg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.2"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>',
       desc: 'Continuous frontline capacity building and credentialing. Standardizing research ethics, digital literacy, and field protocol execution for thousands of rural enumerators.',
       capabilities: [
         'Structured certification modules across 6 professional tiers',
@@ -222,9 +217,6 @@ function initPlatformWheel() {
       badgeClass: 'badge-purple',
       strokeColor: '#7C3AED',
       title: 'Sage',
-      category: 'AI Advisory',
-      tag: 'Econometrics & RCT',
-      iconSvg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>',
       desc: 'Domain-specific evaluation design, econometric modeling, and AI advisory. Bridging multilateral donor mandates with ground execution realities.',
       capabilities: [
         'Quasi-experimental impact evaluations & RCT protocol design',
@@ -239,9 +231,6 @@ function initPlatformWheel() {
       badgeClass: 'badge-amber',
       strokeColor: '#D97706',
       title: 'Roots',
-      category: 'Community',
-      tag: '150+ Dialects & Trust',
-      iconSvg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
       desc: 'Deep community embeddedness and cultural fluency. Local researchers living in the target blocks ensure authentic access, elder consent, and zero resistance.',
       capabilities: [
         'Dialect-matched interviewer pairing across 150+ dialects',
@@ -256,9 +245,6 @@ function initPlatformWheel() {
       badgeClass: 'badge-blue',
       strokeColor: '#0284C7',
       title: 'Reach',
-      category: 'Logistics',
-      tag: '225+ Districts Pan-India',
-      iconSvg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>',
       desc: 'Pan-India physical mobility and rapid field mobilization across 225+ districts, tribal forest belts, and digital dark zones within 48 hours.',
       capabilities: [
         'Turnkey 48-hour mobilization across 25 states & union territories',
@@ -273,9 +259,6 @@ function initPlatformWheel() {
       badgeClass: 'badge-amber',
       strokeColor: '#EA580C',
       title: 'Connect',
-      category: 'Network',
-      tag: 'Two-Sided Matching Rails',
-      iconSvg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2.2"><rect x="2" y="2" width="8" height="8" rx="2"></rect><rect x="14" y="2" width="8" height="8" rx="2"></rect><rect x="8" y="14" width="8" height="8" rx="2"></rect><path d="M6 10v2a2 2 0 0 0 2 2h4"></path><path d="M18 10v2a2 2 0 0 1-2 2h-4"></path></svg>',
       desc: 'Two-sided network coordination linking institutional mandates (Govt, CSR, AI labs, Corporates) directly to verified local grassroots capacity.',
       capabilities: [
         'Automated algorithmic matching by geography, dialect, and tier',
@@ -290,9 +273,6 @@ function initPlatformWheel() {
       badgeClass: 'badge-purple',
       strokeColor: '#4F46E5',
       title: 'Access',
-      category: 'Inclusion',
-      tag: 'DPI & Credit Unlocking',
-      iconSvg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>',
       desc: 'Unlocking Digital Public Infrastructure (DPI), essential public services, formal financial credit, and government entitlements for last-mile citizens.',
       capabilities: [
         'DPI enablement & assisted onboarding for rural households',
@@ -302,429 +282,16 @@ function initPlatformWheel() {
     }
   ];
 
-  const pillarMap = {};
-  pillars.forEach((p, idx) => {
-    p.slotAngle = (idx * 360) / pillars.length;
-    pillarMap[p.key] = p;
-  });
-
-  // Geometry Constants
-  const isMobile = window.innerWidth <= 640;
-  const RADIUS = isMobile ? 215 : 275;
-  const CARD_W = isMobile ? 135 : 155;
-  const CARD_H = isMobile ? 195 : 220;
-  const CURVE_SEGMENTS = 4;
-  const SLICE_BLEED = 1;
-  const CARD_ARC = (CARD_W / RADIUS) * (180 / Math.PI);
-  const sliceStep = CARD_W / CURVE_SEGMENTS;
-  const sliceW = sliceStep + 2 * SLICE_BLEED;
-
-  // 3D Motion Constants
-  const TILT_X = 4;
-  const TILT_Z = -12;
-  const BACK_DIM = 0.58;
-  const DRAG_SPEED = 0.18;
-  const DRAG_VEL_SMOOTH = 0.2;
-  const GLIDE_FALL = 0.52;
-  const GLIDE_SETTLE = 0.35;
-  const FLICK_MAX = 650;
-  const AUTO_SPEED = 3.2;
-  const ROCK_TILT = 2.2;
-  const ROCK_SHIFT = 8;
-  const ROCK_SMOOTH = 2.5;
-
-  let activePillarKey = 'ground-truth';
-  const cardNodes = [];
-  const sliceNodes = [];
-
-  // Build 3D Curved Cards DOM
-  spinner.innerHTML = '';
-  pillars.forEach((pillar, slotIndex) => {
-    const cardEl = document.createElement('div');
-    cardEl.className = `orbit-card ${pillar.key === activePillarKey ? 'active' : ''}`;
-    cardEl.setAttribute('data-pillar', pillar.key);
-    cardEl.style.setProperty('--active-color', pillar.strokeColor);
-    cardEl.style.width = `${CARD_W}px`;
-    cardEl.style.height = `${CARD_H}px`;
-    cardEl.style.transform = `translate(-50%, -50%) rotateY(${pillar.slotAngle}deg)`;
-
-    // Curvature vertical slices
-    for (let j = 0; j < CURVE_SEGMENTS; j++) {
-      const sliceAngle = ((j + 0.5) / CURVE_SEGMENTS - 0.5) * CARD_ARC;
-      const sliceBox = document.createElement('div');
-      sliceBox.className = 'orbit-card-slice';
-      sliceBox.style.width = `${sliceW}px`;
-      sliceBox.style.height = `${CARD_H}px`;
-      sliceBox.style.transform = `translate(-50%, -50%) rotateY(${sliceAngle}deg) translateZ(${RADIUS}px)`;
-
-      // Left and right border rounding for edges of curved card
-      const isFirst = j === 0;
-      const isLast = j === CURVE_SEGMENTS - 1;
-      const rad = 18;
-      sliceBox.style.borderTopLeftRadius = isFirst ? `${rad}px` : '0';
-      sliceBox.style.borderBottomLeftRadius = isFirst ? `${rad}px` : '0';
-      sliceBox.style.borderTopRightRadius = isLast ? `${rad}px` : '0';
-      sliceBox.style.borderBottomRightRadius = isLast ? `${rad}px` : '0';
-
-      const inner = document.createElement('div');
-      inner.className = 'orbit-card-inner';
-      inner.style.width = `${CARD_W}px`;
-      inner.style.height = `${CARD_H}px`;
-      inner.style.left = `${SLICE_BLEED - j * sliceStep}px`;
-
-      inner.innerHTML = `
-        <div class="orbit-card-accent" style="background: ${pillar.strokeColor};"></div>
-        <div class="orbit-card-header">
-          <span class="orbit-card-number">${pillar.num}</span>
-          <span class="orbit-card-badge" style="background: ${pillar.strokeColor}18; color: ${pillar.strokeColor};">${pillar.category}</span>
-        </div>
-        <div class="orbit-card-icon-wrap" style="background: ${pillar.strokeColor}12;">
-          ${pillar.iconSvg}
-        </div>
-        <div class="orbit-card-title" style="${pillar.key === 'ground-truth' ? 'font-size: 0.88rem; line-height: 1.25;' : ''}">${pillar.cardTitle || pillar.title}</div>
-        <div class="orbit-card-tag">${pillar.tag}</div>
-      `;
-
-      sliceBox.appendChild(inner);
-      cardEl.appendChild(sliceBox);
-      sliceNodes.push({ slotIndex, inner });
-    }
-
-    cardEl.addEventListener('click', (e) => {
-      e.stopPropagation();
-      rotateToPillar(pillar.key);
-    });
-
-    spinner.appendChild(cardEl);
-    cardNodes.push({ key: pillar.key, el: cardEl, slotAngle: pillar.slotAngle });
-  });
-
-  // State Management
-  const state = {
-    angle: 0,
-    targetAngle: null,
-    drift: 0,
-    dragOffset: 0,
-    glideVel: 0,
-    pointerX: 0,
-    pointerY: 0,
-    rockTilt: 0,
-    rockShift: 0,
-    isDragging: false
-  };
-
-  // Sync Details Card
-  function updateDetailsPane(key) {
-    const data = pillarMap[key];
-    if (!data) return;
-    activePillarKey = key;
-
-    // Update active class on card elements
-    cardNodes.forEach(c => {
-      if (c.key === key) c.el.classList.add('active');
-      else c.el.classList.remove('active');
-    });
-
-    // Update active class on quick nav chips
-    chips.forEach(chip => {
-      if (chip.getAttribute('data-pillar') === key) chip.classList.add('active');
-      else chip.classList.remove('active');
-    });
-
-    // Update details pane
-    const detailsCard = document.getElementById('wheel-details-content');
-    if (detailsCard) {
-      detailsCard.style.opacity = '0.7';
-      detailsCard.style.transform = 'translateY(4px)';
-
-      setTimeout(() => {
-        if (badgeTextEl) badgeTextEl.textContent = data.badge;
-        if (badgeEl) badgeEl.className = `wheel-details-badge badge ${data.badgeClass}`;
-        if (titleEl) titleEl.textContent = data.title;
-        if (descEl) descEl.textContent = data.desc;
-
-        if (capabilitiesEl) {
-          if (data.steps && data.steps.length) {
-            capabilitiesEl.className = 'gt-steps-grid';
-            capabilitiesEl.innerHTML = data.steps.map(step => `
-              <div class="gt-step-item">
-                <div class="gt-step-header">
-                  <span class="gt-step-num">STEP ${step.num}</span>
-                  <span class="gt-step-name">${step.name}</span>
-                </div>
-                <p class="gt-step-desc">${step.desc}</p>
-              </div>
-            `).join('');
-          } else {
-            capabilitiesEl.className = 'wheel-capabilities-list';
-            capabilitiesEl.innerHTML = data.capabilities.map(cap => `
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${data.strokeColor}" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>${cap}</span>
-              </li>
-            `).join('');
-          }
-        }
-
-        detailsCard.style.opacity = '1';
-        detailsCard.style.transform = 'translateY(0)';
-      }, 140);
-    }
-  }
-
-  // Smoothly Rotate To A Specific Pillar
-  function rotateToPillar(key) {
-    const p = pillarMap[key];
-    if (!p) return;
-
-    // We want (p.slotAngle + targetAngle) = 0 mod 360  =>  targetAngle = -p.slotAngle
-    const desiredAngle = -p.slotAngle;
-    const currentAngle = state.angle;
-
-    // Find shortest angular path
-    let diff = (desiredAngle - currentAngle) % 360;
-    if (diff > 180) diff -= 360;
-    if (diff < -180) diff += 360;
-
-    state.targetAngle = currentAngle + diff;
-    state.glideVel = 0;
-    updateDetailsPane(key);
-  }
-
-  // Determine which card is currently closest to the front (0 deg)
-  function detectFrontCard(currentAngle) {
-    let closestKey = activePillarKey;
-    let minDiff = Infinity;
-
-    pillars.forEach(p => {
-      let worldAngle = (p.slotAngle + currentAngle) % 360;
-      if (worldAngle > 180) worldAngle -= 360;
-      if (worldAngle < -180) worldAngle += 360;
-
-      const diff = Math.abs(worldAngle);
-      if (diff < minDiff) {
-        minDiff = diff;
-        closestKey = p.key;
-      }
-    });
-
-    if (closestKey !== activePillarKey && minDiff < 32) {
-      updateDetailsPane(closestKey);
-    }
-  }
-
-  // Cosine Shading for Real Depth
-  function applyDepthShading(currentAngle) {
-    sliceNodes.forEach(item => {
-      const p = pillars[item.slotIndex];
-      const worldDeg = (p.slotAngle + currentAngle) % 360;
-      const rad = (worldDeg * Math.PI) / 180;
-      // Cosine brightness formula: front (cos = 1) -> 1.0, back (cos = -1) -> 1 - BACK_DIM
-      const b = (1 - BACK_DIM * Math.max(0, -Math.cos(rad))).toFixed(3);
-      item.inner.style.filter = `brightness(${b})`;
-    });
-  }
-
-  // Animation Frame Loop
-  let rafId = null;
-  let lastTime = 0;
-  let inView = false;
-
-  function tick(now) {
-    if (!lastTime) lastTime = now;
-    const dt = Math.min(0.05, (now - lastTime) / 1000);
-    lastTime = now;
-
-    if (!state.isDragging) {
-      if (state.targetAngle !== null) {
-        // Spring smoothly to target
-        const diff = state.targetAngle - state.angle;
-        state.angle += diff * Math.min(1, 8.5 * dt);
-        if (Math.abs(diff) < 0.1) {
-          state.angle = state.targetAngle;
-          state.targetAngle = null;
-        }
-      } else {
-        // Ambient idle drift
-        state.drift += AUTO_SPEED * dt;
-
-        // Inertial flick glide
-        if (Math.abs(state.glideVel) > GLIDE_SETTLE) {
-          state.glideVel *= Math.exp(-GLIDE_FALL * dt);
-          state.dragOffset += state.glideVel * dt;
-        } else {
-          state.glideVel = 0;
-        }
-
-        const target = state.drift + state.dragOffset;
-        state.angle += (target - state.angle) * (1 - Math.exp(-7 * dt));
-      }
-    }
-
-    // Render spinner rotation
-    spinner.style.transform = `rotateY(${state.angle}deg)`;
-    applyDepthShading(state.angle);
-
-    if (state.isDragging || Math.abs(state.glideVel) > 0) {
-      detectFrontCard(state.angle);
-    }
-
-    // Boat rocking parallax following pointer
-    const k = 1 - Math.exp(-ROCK_SMOOTH * dt);
-    state.rockTilt += (state.pointerY * ROCK_TILT - state.rockTilt) * k;
-    state.rockShift += (-state.pointerX * ROCK_SHIFT - state.rockShift) * k;
-
-    if (tiltEl) {
-      tiltEl.style.transform = `rotateZ(${TILT_Z}deg) rotateX(${TILT_X + state.rockTilt}deg)`;
-    }
-    if (cameraEl) {
-      cameraEl.style.transform = `translate(${state.rockShift}px, 0px)`;
-    }
-
-    rafId = requestAnimationFrame(tick);
-  }
-
-  // Intersection Observer for performance
-  const io = new IntersectionObserver((entries) => {
-    inView = entries.some(e => e.isIntersecting);
-    if (inView && rafId === null) {
-      lastTime = 0;
-      rafId = requestAnimationFrame(tick);
-    } else if (!inView && rafId !== null) {
-      cancelAnimationFrame(rafId);
-      rafId = null;
-    }
-  }, { threshold: 0.1 });
-  io.observe(container);
-
-  // Pointer Drag & Momentum Tracking
-  let dragId = null;
-  let lastX = 0;
-  let lastDragTime = 0;
-  let dragVel = 0;
-
-  function onPointerDown(e) {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    if (dragId !== null) return;
-    dragId = e.pointerId;
-    state.isDragging = true;
-    state.targetAngle = null;
-    state.glideVel = 0;
-    lastX = e.clientX;
-    lastDragTime = performance.now();
-    dragVel = 0;
-
-    container.setPointerCapture?.(e.pointerId);
-    container.style.cursor = 'grabbing';
-  }
-
-  function onPointerMove(e) {
-    if (e.pointerId !== dragId) return;
-    const now = performance.now();
-    const dx = e.clientX - lastX;
-    lastX = e.clientX;
-    const dtMs = Math.max(1, now - lastDragTime);
-    lastDragTime = now;
-
-    // Exponential moving average for flick velocity
-    dragVel = dragVel * (1 - DRAG_VEL_SMOOTH) + (dx / dtMs) * 1000 * DRAG_VEL_SMOOTH;
-
-    state.dragOffset += dx * DRAG_SPEED;
-    state.angle += dx * DRAG_SPEED;
-  }
-
-  function onPointerUp(e) {
-    if (e.pointerId !== dragId) return;
-    dragId = null;
-    state.isDragging = false;
-    container.style.cursor = 'grab';
-
-    // Impart flick velocity onto glide
-    state.glideVel = Math.max(-FLICK_MAX, Math.min(FLICK_MAX, dragVel * DRAG_SPEED));
-    dragVel = 0;
-
-    // Detect front card after drag release
-    detectFrontCard(state.angle);
-  }
-
-  container.addEventListener('pointerdown', onPointerDown);
-  container.addEventListener('pointermove', onPointerMove);
-  container.addEventListener('pointerup', onPointerUp);
-  container.addEventListener('pointercancel', onPointerUp);
-
-  // Desktop Pointer Parallax Tracking
-  window.addEventListener('pointermove', (e) => {
-    if (e.pointerType !== 'mouse') return;
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    if (!w || !h) return;
-    state.pointerX = (e.clientX / w) * 2 - 1;
-    state.pointerY = (e.clientY / h) * 2 - 1;
-  }, { passive: true });
-
-  // Quick Nav Chips Listeners
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const key = chip.getAttribute('data-pillar');
-      rotateToPillar(key);
-    });
-  });
-
-  // Initial Sync
-  updateDetailsPane('ground-truth');
-  applyDepthShading(0);
-}
-
-/* ==========================================================================
-   Smooth Anchor Scrolling
-   ========================================================================== */
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#' || targetId === '') return;
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        e.preventDefault();
-        const headerOffset = 80;
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-}
-
-/* ==========================================================================
-   8. Locana Local Node — FilamentFlower Canvas & Orbital Cards System
-   Based on Framer Filamentflower (AHkv5e)
-   ========================================================================== */
-function initFilamentFlowerNode() {
-  const wrap = document.getElementById('filament-flower-wrap');
-  const canvas = document.getElementById('filament-flower-canvas');
-  const trackEl = document.getElementById('filament-orbit-track');
-  const orbitItems = document.querySelectorAll('.node-orbit-item');
-  const quickPills = document.querySelectorAll('.node-quick-pill');
-
-  if (!wrap || !canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-
-  // Filament flower configuration matching Framer component specs, optimized for clean light background
+  // Filament flower configuration matching Framer component specs for 7 Platform Pillars
   const cfg = {
     lineColor: '#2563EB',
     labelColor: '#1D4ED8',
-    nodes: 130,
-    petals: 5,
-    curve: 0.9,
-    drift: 0.4,
+    nodes: 140,
+    petals: 7,
+    curve: 0.88,
+    drift: 0.38,
     spin: 0.014,
-    lineOpacity: 0.26,
+    lineOpacity: 0.28,
     ringDots: true,
     waveSpeed: 2.2,
     waveDensity: 3,
@@ -733,14 +300,14 @@ function initFilamentFlowerNode() {
     buildTime: 1.8,
     showLabels: true,
     labels: [
-      'PEOPLE · 225+ DISTRICTS',
-      'SKILLS · FPIC & ETHICS',
-      'TECHNOLOGY · GPS HASH',
-      'ASSETS · MICRO-HUBS',
-      'TRUST · PANCHAYAT ALIGNED',
-      'AUTONOMOUS UNIT',
-      'CAPI VALIDATION',
-      '48-HR SLA'
+      'GROUND TRUTH · VERIFICATION',
+      'ELEVATE · 6-TIER SKILLING',
+      'SAGE · AI & ECONOMETRICS',
+      'ROOTS · 150+ DIALECTS',
+      'REACH · 225+ DISTRICTS',
+      'CONNECT · TWO-SIDED NETWORK',
+      'ACCESS · DPI & INCLUSION',
+      '48-HR SLA TURNAROUND'
     ],
     labelSize: 10,
     trailingDots: false
@@ -792,8 +359,7 @@ function initFilamentFlowerNode() {
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     cx = W * 0.5;
     cy = H * 0.5;
-    // Radius of circular outline - leaves ample margin for outward-pointing small cards
-    R = Math.min(W, H) * 0.34;
+    R = Math.min(W, H) * 0.35;
 
     if (trackEl) {
       trackEl.style.width = `${R * 2}px`;
@@ -1001,66 +567,623 @@ function initFilamentFlowerNode() {
     startLoop();
   }
 
-  // Orbital Cards & Hover / Click Interactions
-  function setActiveNode(index) {
-    orbitItems.forEach((item, i) => {
+  // Orbital Nodes, Chips & Right-Side Details Card Interactions
+  let activePillarKey = 'ground-truth';
+
+  function updateDetails(key) {
+    const data = platformPillars.find(p => p.key === key);
+    if (!data) return;
+    activePillarKey = key;
+
+    // Update active state on flower orbital items
+    orbitItems.forEach((item) => {
+      const isCurrent = item.getAttribute('data-pillar') === key;
+      item.classList.toggle('active', isCurrent);
       const btn = item.querySelector('.node-anchor-btn');
-      if (i === index) {
-        item.classList.add('active');
-        if (btn) btn.setAttribute('aria-expanded', 'true');
-        // Point canvas mouse physics toward this node
+      if (btn) btn.setAttribute('aria-expanded', isCurrent ? 'true' : 'false');
+      if (isCurrent) {
         const angleDeg = parseFloat(item.getAttribute('data-angle')) || 0;
         const rad = (angleDeg * Math.PI) / 180;
-        mouse.x = cx + Math.cos(rad) * R * 0.8;
-        mouse.y = cy + Math.sin(rad) * R * 0.8;
+        mouse.x = cx + Math.cos(rad) * R * 0.85;
+        mouse.y = cy + Math.sin(rad) * R * 0.85;
         mouse.on = true;
-      } else {
-        item.classList.remove('active');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
       }
     });
 
-    quickPills.forEach((pill, i) => {
-      pill.classList.toggle('active', i === index);
+    // Update active state on chips
+    chips.forEach(chip => {
+      chip.classList.toggle('active', chip.getAttribute('data-pillar') === key);
     });
+
+    // Update right-side details card
+    const detailsCard = document.getElementById('platform-details-content');
+    if (detailsCard) {
+      detailsCard.style.opacity = '0.7';
+      detailsCard.style.transform = 'translateY(4px)';
+
+      setTimeout(() => {
+        if (badgeTextEl) badgeTextEl.textContent = data.badge;
+        if (badgeEl) badgeEl.className = `wheel-details-badge badge ${data.badgeClass}`;
+        if (titleEl) titleEl.textContent = data.title;
+        if (descEl) descEl.textContent = data.desc;
+
+        if (capabilitiesEl) {
+          if (key === 'ground-truth' && data.steps) {
+            capabilitiesEl.innerHTML = `
+              <div class="gt-steps-grid">
+                ${data.steps.map(step => `
+                  <div class="gt-step-item">
+                    <div class="gt-step-header">
+                      <span class="gt-step-num">STEP ${step.num}</span>
+                      <span class="gt-step-name">${step.name}</span>
+                    </div>
+                    <p class="gt-step-desc">${step.desc}</p>
+                  </div>
+                `).join('')}
+              </div>
+            `;
+          } else if (data.capabilities) {
+            capabilitiesEl.innerHTML = `
+              <ul class="wheel-capabilities-list">
+                ${data.capabilities.map(cap => `
+                  <li>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${data.strokeColor}" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>${cap}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            `;
+          }
+        }
+
+        detailsCard.style.opacity = '1';
+        detailsCard.style.transform = 'translateY(0)';
+      }, 150);
+    }
   }
 
-  orbitItems.forEach((item, index) => {
-    // Hover: show small card & flex filaments
+  orbitItems.forEach((item) => {
+    const key = item.getAttribute('data-pillar');
+    const btn = item.querySelector('.node-anchor-btn');
+
+    const handleSelect = (e) => {
+      if (e) e.stopPropagation();
+      updateDetails(key);
+    };
+
+    item.addEventListener('click', handleSelect);
+    if (btn) btn.addEventListener('click', handleSelect);
+
     item.addEventListener('mouseenter', () => {
-      setActiveNode(index);
+      const angleDeg = parseFloat(item.getAttribute('data-angle')) || 0;
+      const rad = (angleDeg * Math.PI) / 180;
+      mouse.x = cx + Math.cos(rad) * R * 0.85;
+      mouse.y = cy + Math.sin(rad) * R * 0.85;
+      mouse.on = true;
     });
 
     item.addEventListener('mouseleave', () => {
-      item.classList.remove('active');
-      const btn = item.querySelector('.node-anchor-btn');
-      if (btn) btn.setAttribute('aria-expanded', 'false');
-      mouse.on = false;
+      const currentActiveItem = document.querySelector('#platform-orbit-items .node-orbit-item.active');
+      if (currentActiveItem) {
+        const angleDeg = parseFloat(currentActiveItem.getAttribute('data-angle')) || 0;
+        const rad = (angleDeg * Math.PI) / 180;
+        mouse.x = cx + Math.cos(rad) * R * 0.85;
+        mouse.y = cy + Math.sin(rad) * R * 0.85;
+        mouse.on = true;
+      } else {
+        mouse.on = false;
+      }
     });
-
-    // Click / Touch: toggle card
-    const btn = item.querySelector('.node-anchor-btn');
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isNowActive = item.classList.contains('active');
-        if (isNowActive) {
-          item.classList.remove('active');
-          btn.setAttribute('aria-expanded', 'false');
-          mouse.on = false;
-        } else {
-          setActiveNode(index);
-        }
-      });
-    }
   });
 
-  // Quick Selector Pills
-  quickPills.forEach((pill) => {
-    pill.addEventListener('click', () => {
-      const targetIdx = parseInt(pill.getAttribute('data-target'), 10);
-      setActiveNode(targetIdx);
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const key = chip.getAttribute('data-pillar');
+      updateDetails(key);
+    });
+  });
+
+  // Initial display setup
+  updateDetails('ground-truth');
+}
+
+/* ==========================================================================
+   8. Locana Local Node — Framer ArcCardCarousel Component
+   Infinite 3D Arc Card Carousel with Dynamic Y-Tilt and Magnetic Snap
+   Data: People, + Skills, + Technology, + Assets, + Trust
+   ========================================================================== */
+function initArcCardCarousel() {
+  const container = document.getElementById('arc-carousel-container');
+  const stage = document.getElementById('arc-carousel-stage');
+  const chips = document.querySelectorAll('#node-chips-container .wheel-chip');
+  const prevBtn = document.getElementById('arc-nav-prev');
+  const nextBtn = document.getElementById('arc-nav-next');
+
+  if (!container || !stage) return;
+
+  const pillarData = [
+    {
+      key: 'people',
+      num: '01',
+      code: '001',
+      title: 'People',
+      category: 'Frontline Talent',
+      accentColor: '#2563EB',
+      image: 'assets/images/hero_field_network.jpg',
+      desc: 'Locally resident, certified enumerators, supervisors, and community coordinators who live in the district.'
+    },
+    {
+      key: 'skills',
+      num: '02',
+      code: '002',
+      title: '+ Skills',
+      category: 'Ethics & Protocols',
+      accentColor: '#059669',
+      image: 'assets/images/frontline_skilling_workshop.jpg',
+      desc: 'Standardized training in research ethics, FPIC consent protocols, survey methodologies, and digital tools.'
+    },
+    {
+      key: 'technology',
+      num: '03',
+      code: '003',
+      title: '+ Technology',
+      category: 'Mobile Telemetry & CAPI',
+      accentColor: '#7C3AED',
+      image: 'assets/images/locana_tech_telemetry.jpg',
+      desc: 'Locana mobile fieldwork application, GPS geofencing, real-time telemetry, and offline-first CAPI data sync.'
+    },
+    {
+      key: 'assets',
+      num: '04',
+      code: '004',
+      title: '+ Assets',
+      category: 'Hardware & Micro-Hubs',
+      accentColor: '#D97706',
+      image: 'assets/images/geospatial_agri_survey.jpg',
+      desc: 'Verified field devices, RTK/GNSS tools, local transport networks, and micro-hub logistics nodes.'
+    },
+    {
+      key: 'trust',
+      num: '05',
+      code: '005',
+      title: '+ Trust',
+      category: 'Community Capital',
+      accentColor: '#DB2777',
+      image: 'assets/images/vernacular_ai_voice.jpg',
+      desc: 'Deep community roots, Panchayat relationships, cultural alignment, and institutional credibility.'
+    }
+  ];
+
+  // Tile items twice (10 items) for a continuous 360-degree seamless infinite arc
+  const items = [...pillarData, ...pillarData];
+  const count = items.length;
+
+  function getGeometry() {
+    const w = window.innerWidth;
+    if (w <= 640) {
+      return {
+        radius: 750,
+        spacing: 19,
+        cardWidth: 230,
+        cardHeight: 335,
+        arcOffset: 195,
+        tiltAmount: 14,
+        sensitivity: 1.15
+      };
+    } else if (w <= 1024) {
+      return {
+        radius: 1120,
+        spacing: 14,
+        cardWidth: 260,
+        cardHeight: 375,
+        arcOffset: 220,
+        tiltAmount: 17,
+        sensitivity: 1.05
+      };
+    } else {
+      return {
+        radius: 1400,
+        spacing: 11.8,
+        cardWidth: 282,
+        cardHeight: 395,
+        arcOffset: 235,
+        tiltAmount: 20,
+        sensitivity: 1.0
+      };
+    }
+  }
+
+  let geo = getGeometry();
+
+  // Math helper functions mirroring Framer ArcCardCarousel specs
+  function wrapAngle(deg, period) {
+    const half = period / 2;
+    let a = deg % period;
+    if (a < -half) a += period;
+    if (a >= half) a -= period;
+    return a;
+  }
+
+  function cardTransform(theta, tilt, radius) {
+    const rad = (theta * Math.PI) / 180;
+    const x = radius * Math.sin(rad);
+    const y = -radius * Math.cos(rad);
+    return `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0) rotateZ(${theta}deg) rotateY(${tilt}deg)`;
+  }
+
+  function cardOpacity(theta, fadeStart, fadeEnd) {
+    const t = Math.abs(theta);
+    if (t <= fadeStart) return 1;
+    if (t >= fadeEnd) return 0;
+    return 1 - (t - fadeStart) / (fadeEnd - fadeStart);
+  }
+
+  // Build card DOM elements
+  stage.innerHTML = '';
+  const cardEls = [];
+
+  items.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'arc-card';
+    card.setAttribute('data-pillar', item.key);
+    card.setAttribute('data-index', i);
+    card.style.setProperty('--card-accent', item.accentColor);
+    card.style.width = `${geo.cardWidth}px`;
+    card.style.height = `${geo.cardHeight}px`;
+
+    card.innerHTML = `
+      <div class="arc-card-inner">
+        <div class="arc-card-media-wrap">
+          <img src="${item.image}" alt="${item.title} — ${item.category}" class="arc-card-img" draggable="false" loading="lazy" />
+          <div class="arc-card-gradient"></div>
+          <div class="arc-card-badge-row">
+            <span class="arc-card-tag" style="background: ${item.accentColor}22; color: ${item.accentColor}; border: 1px solid ${item.accentColor}44;">
+              ${item.category}
+            </span>
+            <span class="arc-card-num-chip">${item.num}</span>
+          </div>
+        </div>
+        <div class="arc-card-content">
+          <div class="arc-card-head">
+            <h3 class="arc-card-title">${item.title}</h3>
+            <span class="arc-card-code" style="color: ${item.accentColor};">${item.code}</span>
+          </div>
+          <p class="arc-card-desc">${item.desc}</p>
+        </div>
+      </div>
+    `;
+
+    card.addEventListener('click', (e) => {
+      if (dragMoved) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+      rotateToIndex(i);
+    });
+
+    stage.appendChild(card);
+    cardEls.push(card);
+  });
+
+  // State proxies & auto-drift state
+  const rotProxy = { r: 0 };
+  const tiltProxy = { t: 0 };
+  let raf = null;
+  let rotTween = null;
+  let tiltTween = null;
+
+  const AUTO_SPEED = 1.8; // degrees per second for gentle ambient drift
+  let isHovered = false;
+  let isVisible = true;
+  let resumeAutoTime = 0;
+  let lastNow = performance.now();
+
+  const easeOutCubic = p => 1 - Math.pow(1 - p, 3);
+
+  function setTilt(value) {
+    tiltTween = {
+      from: tiltProxy.t,
+      to: value,
+      start: performance.now(),
+      dur: 480
+    };
+    ensureFrame();
+  }
+
+  function frame(now) {
+    raf = null;
+    let active = false;
+    const dt = Math.min((now - lastNow) / 1000, 0.05);
+    lastNow = now;
+
+    if (rotTween) {
+      const p = Math.min(1, (now - rotTween.start) / rotTween.dur);
+      rotProxy.r = rotTween.from + (rotTween.to - rotTween.from) * easeOutCubic(p);
+      if (p >= 1) {
+        rotTween = null;
+        resumeAutoTime = now + 1200; // brief pause after tween completes
+      } else {
+        active = true;
+      }
+    } else if (!dragging && !isHovered && isVisible && now > resumeAutoTime) {
+      // Gentle ambient drift
+      rotProxy.r += AUTO_SPEED * dt;
+      active = true;
+    }
+
+    if (tiltTween) {
+      const p = Math.min(1, (now - tiltTween.start) / tiltTween.dur);
+      tiltProxy.t = tiltTween.from + (tiltTween.to - tiltTween.from) * easeOutCubic(p);
+      if (p >= 1) tiltTween = null;
+      else active = true;
+    }
+
+    render();
+
+    if (active || (!dragging && !isHovered && isVisible)) {
+      raf = requestAnimationFrame(frame);
+    }
+  }
+
+  function ensureFrame() {
+    lastNow = performance.now();
+    if (raf == null) raf = requestAnimationFrame(frame);
+  }
+
+  function render() {
+    const rot = rotProxy.r;
+    const tlt = tiltProxy.t;
+    const period = count * geo.spacing;
+    const half = period / 2;
+    const fadeEnd = Math.min(88, half - 2.5);
+    const fadeStart = Math.max(10, fadeEnd - 18);
+
+    stage.style.top = `${geo.arcOffset + geo.radius}px`;
+
+    let closestIdx = 0;
+    let minTheta = 99999;
+
+    for (let i = 0; i < count; i++) {
+      const el = cardEls[i];
+      if (!el) continue;
+      const theta = wrapAngle(i * geo.spacing - rot, period);
+      el.style.transform = cardTransform(theta, tlt, geo.radius);
+      el.style.opacity = String(cardOpacity(theta, fadeStart, fadeEnd));
+      el.style.zIndex = String(Math.round(1000 - Math.abs(theta)));
+
+      const absT = Math.abs(theta);
+      if (absT < minTheta) {
+        minTheta = absT;
+        closestIdx = i;
+      }
+    }
+
+    // Mark active center card
+    cardEls.forEach((el, idx) => {
+      if (idx === closestIdx) el.classList.add('active');
+      else el.classList.remove('active');
+    });
+
+    // Synchronize navigation chips
+    const activeKey = items[closestIdx].key;
+    chips.forEach(chip => {
+      if (chip.getAttribute('data-pillar') === activeKey) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
+  }
+
+  // Pointer drag interaction
+  let dragging = false;
+  let lastX = 0;
+  let downX = 0;
+  let dragMoved = false;
+  let lastT = 0;
+  let velocity = 0;
+  let dir = 0;
+  let target = rotProxy.r;
+
+  function onDown(e) {
+    dragging = true;
+    const clientX = e.clientX ?? (e.touches && e.touches[0].clientX) ?? 0;
+    lastX = clientX;
+    downX = clientX;
+    dragMoved = false;
+    lastT = performance.now();
+    velocity = 0;
+    dir = 0;
+    rotTween = null;
+    target = rotProxy.r;
+    container.style.cursor = 'grabbing';
+  }
+
+  function onMove(e) {
+    if (!dragging) return;
+    const clientX = e.clientX ?? (e.touches && e.touches[0].clientX) ?? 0;
+    const now = performance.now();
+    const dx = clientX - lastX;
+    const dt = Math.max(now - lastT, 1);
+
+    if (Math.abs(clientX - downX) > 6) dragMoved = true;
+
+    // Direction-aware 3D tilt
+    if (Math.abs(dx) > 1.2) {
+      const newDir = dx > 0 ? 1 : -1;
+      if (newDir !== dir) {
+        dir = newDir;
+        setTilt(dir * geo.tiltAmount);
+      }
+    }
+
+    const dDeg = -(dx / geo.radius) * (180 / Math.PI) * geo.sensitivity;
+    target += dDeg;
+    const instV = dDeg / (dt / 1000);
+    velocity = velocity * 0.6 + instV * 0.4;
+    rotProxy.r = target;
+    render();
+
+    lastX = clientX;
+    lastT = now;
+  }
+
+  function onUp() {
+    if (!dragging) return;
+    dragging = false;
+    dir = 0;
+    container.style.cursor = 'grab';
+    setTilt(0);
+
+    // Snap to nearest slot with velocity fling bias
+    const bias = Math.max(-geo.spacing, Math.min(geo.spacing, velocity * 0.08));
+    const snapped = Math.round((target + bias) / geo.spacing) * geo.spacing;
+    target = snapped;
+    rotTween = {
+      from: rotProxy.r,
+      to: snapped,
+      start: performance.now(),
+      dur: 560
+    };
+    ensureFrame();
+  }
+
+  function rotateToIndex(idx) {
+    const period = count * geo.spacing;
+    const theta = wrapAngle(idx * geo.spacing - rotProxy.r, period);
+    const to = rotProxy.r + theta;
+    rotTween = {
+      from: rotProxy.r,
+      to: to,
+      start: performance.now(),
+      dur: 600
+    };
+    ensureFrame();
+  }
+
+  function rotateToPillar(key) {
+    const period = count * geo.spacing;
+    let bestIdx = -1;
+    let minDiff = 999999;
+    items.forEach((item, i) => {
+      if (item.key === key) {
+        const theta = Math.abs(wrapAngle(i * geo.spacing - rotProxy.r, period));
+        if (theta < minDiff) {
+          minDiff = theta;
+          bestIdx = i;
+        }
+      }
+    });
+    if (bestIdx >= 0) rotateToIndex(bestIdx);
+  }
+
+  // Bind pointer & touch events
+  container.addEventListener('pointerdown', onDown);
+  window.addEventListener('pointermove', onMove);
+  window.addEventListener('pointerup', onUp);
+  window.addEventListener('pointercancel', onUp);
+
+  // Pause auto-drift on hover, resume after leaving
+  container.addEventListener('mouseenter', () => {
+    isHovered = true;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    isHovered = false;
+    resumeAutoTime = performance.now() + 800;
+    ensureFrame();
+  });
+
+  container.addEventListener('touchstart', () => {
+    isHovered = true;
+  }, { passive: true });
+
+  container.addEventListener('touchend', () => {
+    isHovered = false;
+    resumeAutoTime = performance.now() + 1200;
+    ensureFrame();
+  });
+
+  // Bind navigation chips
+  chips.forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      e.preventDefault();
+      const key = chip.getAttribute('data-pillar');
+      resumeAutoTime = performance.now() + 2200;
+      rotateToPillar(key);
+    });
+  });
+
+  // Prev / Next button listeners
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      const snapped = Math.round((rotProxy.r - geo.spacing) / geo.spacing) * geo.spacing;
+      resumeAutoTime = performance.now() + 2000;
+      rotTween = { from: rotProxy.r, to: snapped, start: performance.now(), dur: 500 };
+      ensureFrame();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const snapped = Math.round((rotProxy.r + geo.spacing) / geo.spacing) * geo.spacing;
+      resumeAutoTime = performance.now() + 2000;
+      rotTween = { from: rotProxy.r, to: snapped, start: performance.now(), dur: 500 };
+      ensureFrame();
+    });
+  }
+
+  // Optimize performance: run auto-drift only when section is visible
+  if (window.IntersectionObserver) {
+    const io = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible) ensureFrame();
+      else if (raf != null) {
+        cancelAnimationFrame(raf);
+        raf = null;
+      }
+    }, { threshold: 0.05 });
+    io.observe(container);
+  }
+
+  // Handle responsive resizing
+  function onResize() {
+    geo = getGeometry();
+    cardEls.forEach(card => {
+      card.style.width = `${geo.cardWidth}px`;
+      card.style.height = `${geo.cardHeight}px`;
+    });
+    render();
+  }
+
+  window.addEventListener('resize', onResize);
+
+  // Initial render & launch auto-drift frame
+  render();
+  ensureFrame();
+}
+
+/* ==========================================================================
+   Smooth Anchor Scrolling
+   ========================================================================== */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#' || targetId === '') return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        const headerOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     });
   });
 }
-

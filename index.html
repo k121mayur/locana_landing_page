@@ -329,7 +329,7 @@
   </section>
 
   <!-- ========================================================================
-       4. Locana Platform (7-Part Interactive Wheel)
+       4. Locana Platform (Filament Flower Interactive Stage)
        Ground Truth • Elevate • Sage • Roots • Reach • Connect • Access
        ======================================================================== -->
   <section class="section-space bg-white" id="platform-wheel">
@@ -351,7 +351,7 @@
       </div>
 
       <!-- Navigation Chips for Quick Selection -->
-      <div class="wheel-nav-chips reveal" id="wheel-chips-container" style="justify-content: center;">
+      <div class="wheel-nav-chips reveal" id="platform-chips-container" style="justify-content: center;">
         <button class="wheel-chip active" data-pillar="ground-truth">Ground Truth</button>
         <button class="wheel-chip" data-pillar="elevate">Elevate</button>
         <button class="wheel-chip" data-pillar="sage">Sage</button>
@@ -363,103 +363,248 @@
 
       <div class="wheel-layout reveal">
 
-        <!-- Interactive 3D Orbit Carousel Platform -->
-        <div class="orbit-platform-container" id="orbit-platform-container">
-          <div class="orbit-scene">
-            <div class="orbit-camera" id="orbit-camera">
-              <div class="orbit-tilt" id="orbit-tilt">
-                <div class="orbit-spinner" id="orbit-spinner" role="region" aria-label="3D Platform Orbit Carousel">
-                  <!-- 3D curved cards mounted dynamically via JavaScript with physics & curvature -->
-                </div>
+        <!-- Left: Filament Flower Interactive Stage -->
+        <div class="platform-flower-container" id="platform-flower-container">
+          <div class="filament-flower-wrap" id="platform-flower-wrap">
+            <canvas id="platform-flower-canvas"></canvas>
+
+            <!-- Circular Orbit Ring Reference -->
+            <div class="filament-orbit-track" id="platform-orbit-track" aria-hidden="true"></div>
+
+            <!-- Central Core Hub Badge -->
+            <div class="node-orbit-center" id="platform-orbit-center">
+              <div class="center-core-pulse"></div>
+              <div class="center-core-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
               </div>
+              <span class="center-core-label">LOCANA</span>
+              <span class="center-core-sub">7 Pillars</span>
             </div>
-          </div>
 
+            <!-- 7 Orbital Node Buttons along the circle outline -->
+            <div class="node-orbit-items" id="platform-orbit-items">
 
+              <!-- Node 1: Ground Truth -->
+              <div class="node-orbit-item active" data-pillar="ground-truth" data-node="0" data-angle="-90"
+                style="--node-color: #2563EB;">
+                <button type="button" class="node-anchor-btn" aria-label="Ground Truth: Auditable verification">
+                  <span class="node-ping-ring"></span>
+                  <span class="node-anchor-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      <polyline points="9 12 11 14 15 10"></polyline>
+                    </svg>
+                  </span>
+                  <span class="node-anchor-pill">
+                    <span class="node-step-tag">01</span>
+                    <span class="node-anchor-name">Ground Truth</span>
+                  </span>
+                </button>
+              </div>
 
-          <!-- Interaction Hint Pill -->
-          <div class="orbit-hint-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path
-                d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
-              </path>
-            </svg>
-            <span>Drag horizontally to spin &bull; Click card to inspect</span>
+              <!-- Node 2: Elevate -->
+              <div class="node-orbit-item" data-pillar="elevate" data-node="1" data-angle="-38.57"
+                style="--node-color: #059669;">
+                <button type="button" class="node-anchor-btn" aria-label="Elevate: Frontline capacity building">
+                  <span class="node-ping-ring"></span>
+                  <span class="node-anchor-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.2">
+                      <circle cx="12" cy="8" r="6"></circle>
+                      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                    </svg>
+                  </span>
+                  <span class="node-anchor-pill">
+                    <span class="node-step-tag">02</span>
+                    <span class="node-anchor-name">Elevate</span>
+                  </span>
+                </button>
+              </div>
+
+              <!-- Node 3: Sage -->
+              <div class="node-orbit-item" data-pillar="sage" data-node="2" data-angle="12.86"
+                style="--node-color: #7C3AED;">
+                <button type="button" class="node-anchor-btn" aria-label="Sage: AI advisory and econometrics">
+                  <span class="node-ping-ring"></span>
+                  <span class="node-anchor-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.2">
+                      <path
+                        d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83">
+                      </path>
+                    </svg>
+                  </span>
+                  <span class="node-anchor-pill">
+                    <span class="node-step-tag">03</span>
+                    <span class="node-anchor-name">Sage</span>
+                  </span>
+                </button>
+              </div>
+
+              <!-- Node 4: Roots -->
+              <div class="node-orbit-item" data-pillar="roots" data-node="3" data-angle="64.29"
+                style="--node-color: #D97706;">
+                <button type="button" class="node-anchor-btn" aria-label="Roots: Community embeddedness">
+                  <span class="node-ping-ring"></span>
+                  <span class="node-anchor-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </span>
+                  <span class="node-anchor-pill">
+                    <span class="node-step-tag">04</span>
+                    <span class="node-anchor-name">Roots</span>
+                  </span>
+                </button>
+              </div>
+
+              <!-- Node 5: Reach -->
+              <div class="node-orbit-item" data-pillar="reach" data-node="4" data-angle="115.71"
+                style="--node-color: #0284C7;">
+                <button type="button" class="node-anchor-btn" aria-label="Reach: Pan-India logistics">
+                  <span class="node-ping-ring"></span>
+                  <span class="node-anchor-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                    </svg>
+                  </span>
+                  <span class="node-anchor-pill">
+                    <span class="node-step-tag">05</span>
+                    <span class="node-anchor-name">Reach</span>
+                  </span>
+                </button>
+              </div>
+
+              <!-- Node 6: Connect -->
+              <div class="node-orbit-item" data-pillar="connect" data-node="5" data-angle="167.14"
+                style="--node-color: #EA580C;">
+                <button type="button" class="node-anchor-btn" aria-label="Connect: Two-sided network orchestration">
+                  <span class="node-ping-ring"></span>
+                  <span class="node-anchor-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.2">
+                      <rect x="2" y="2" width="8" height="8" rx="2"></rect>
+                      <rect x="14" y="2" width="8" height="8" rx="2"></rect>
+                      <rect x="8" y="14" width="8" height="8" rx="2"></rect>
+                      <path d="M6 10v2a2 2 0 0 0 2 2h4"></path>
+                      <path d="M18 10v2a2 2 0 0 1-2 2h-4"></path>
+                    </svg>
+                  </span>
+                  <span class="node-anchor-pill">
+                    <span class="node-step-tag">06</span>
+                    <span class="node-anchor-name">Connect</span>
+                  </span>
+                </button>
+              </div>
+
+              <!-- Node 7: Access -->
+              <div class="node-orbit-item" data-pillar="access" data-node="6" data-angle="218.57"
+                style="--node-color: #4F46E5;">
+                <button type="button" class="node-anchor-btn" aria-label="Access: Digital and financial inclusion">
+                  <span class="node-ping-ring"></span>
+                  <span class="node-anchor-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.2">
+                      <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                      <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                  </span>
+                  <span class="node-anchor-pill">
+                    <span class="node-step-tag">07</span>
+                    <span class="node-anchor-name">Access</span>
+                  </span>
+                </button>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        <!-- Dynamic Information Panel -->
-        <div class="wheel-details-card" id="wheel-details-content">
-          <div class="wheel-details-badge badge badge-blue" id="pillar-badge">
+        <!-- Right: Dynamic Details Card for Locana Platform -->
+        <div class="wheel-details-card" id="platform-details-content">
+          <div class="wheel-details-badge badge badge-blue" id="platform-badge">
             <span class="pulse-dot"></span>
-            <span id="pillar-badge-text">Pillar 01 · Verification Workflow</span>
+            <span id="platform-badge-text">Pillar 01 · Verification Workflow</span>
           </div>
 
-          <h3 class="wheel-details-title" id="pillar-title">HOW GROUND TRUTHING WORKS?</h3>
-          <p class="wheel-details-desc" id="pillar-desc">
+          <h3 class="wheel-details-title" id="platform-title">HOW GROUND TRUTHING WORKS?</h3>
+          <p class="wheel-details-desc" id="platform-desc">
             A seamless 6-step verification lifecycle transforming complex institutional requirements into auditable
             primary ground intelligence.
           </p>
 
-          <div class="gt-steps-grid" id="pillar-capabilities">
-            <div class="gt-step-item">
-              <div class="gt-step-header">
-                <span class="gt-step-num">STEP 01</span>
-                <span class="gt-step-name">Post</span>
+          <div id="platform-capabilities">
+            <div class="gt-steps-grid">
+              <div class="gt-step-item">
+                <div class="gt-step-header">
+                  <span class="gt-step-num">STEP 01</span>
+                  <span class="gt-step-name">Post</span>
+                </div>
+                <p class="gt-step-desc">Institution submits target geography, sample quotas, protocol guidelines &
+                  timelines.</p>
               </div>
-              <p class="gt-step-desc">Institution submits target geography, sample quotas, protocol guidelines &
-                timelines.</p>
-            </div>
-            <div class="gt-step-item">
-              <div class="gt-step-header">
-                <span class="gt-step-num">STEP 02</span>
-                <span class="gt-step-name">Match</span>
+              <div class="gt-step-item">
+                <div class="gt-step-header">
+                  <span class="gt-step-num">STEP 02</span>
+                  <span class="gt-step-name">Match</span>
+                </div>
+                <p class="gt-step-desc">Locana engine matches requirement to certified local node leads & dialect-fluent
+                  teams.</p>
               </div>
-              <p class="gt-step-desc">Locana engine matches requirement to certified local node leads & dialect-fluent
-                teams.</p>
-            </div>
-            <div class="gt-step-item">
-              <div class="gt-step-header">
-                <span class="gt-step-num">STEP 03</span>
-                <span class="gt-step-name">Assign</span>
+              <div class="gt-step-item">
+                <div class="gt-step-header">
+                  <span class="gt-step-num">STEP 03</span>
+                  <span class="gt-step-name">Assign</span>
+                </div>
+                <p class="gt-step-desc">Standardized CAPI digital forms, geofenced clusters & protocol briefings
+                  deployed.</p>
               </div>
-              <p class="gt-step-desc">Standardized CAPI digital forms, geofenced clusters & protocol briefings deployed.
-              </p>
-            </div>
-            <div class="gt-step-item">
-              <div class="gt-step-header">
-                <span class="gt-step-num">STEP 04</span>
-                <span class="gt-step-name">Execute</span>
+              <div class="gt-step-item">
+                <div class="gt-step-header">
+                  <span class="gt-step-num">STEP 04</span>
+                  <span class="gt-step-name">Execute</span>
+                </div>
+                <p class="gt-step-desc">Local researchers conduct field tasks with 100% FPIC consent & live GPS
+                  telemetry logging.</p>
               </div>
-              <p class="gt-step-desc">Local researchers conduct field tasks with 100% FPIC consent & live GPS telemetry
-                logging.</p>
-            </div>
-            <div class="gt-step-item">
-              <div class="gt-step-header">
-                <span class="gt-step-num">STEP 05</span>
-                <span class="gt-step-name">Verify</span>
+              <div class="gt-step-item">
+                <div class="gt-step-header">
+                  <span class="gt-step-num">STEP 05</span>
+                  <span class="gt-step-name">Verify</span>
+                </div>
+                <p class="gt-step-desc">Automated logic checks, cryptographic timestamp hashes & mandatory 10%
+                  supervisor back-checks.</p>
               </div>
-              <p class="gt-step-desc">Automated logic checks, cryptographic timestamp hashes & mandatory 10%
-                back-checks.</p>
-            </div>
-            <div class="gt-step-item">
-              <div class="gt-step-header">
-                <span class="gt-step-num">STEP 06</span>
-                <span class="gt-step-name">Pay</span>
+              <div class="gt-step-item">
+                <div class="gt-step-header">
+                  <span class="gt-step-num">STEP 06</span>
+                  <span class="gt-step-name">Pay</span>
+                </div>
+                <p class="gt-step-desc">Instant, transparent payouts directly to certified local field professionals
+                  upon QC clearance.</p>
               </div>
-              <p class="gt-step-desc">Instant, transparent payouts directly to certified local field professionals upon
-                QC clearance.</p>
             </div>
           </div>
 
-          <div style="display: flex; gap: 1rem; align-items: center;">
+          <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.5rem; flex-wrap: wrap;">
             <a href="contact.html" class="btn btn-primary btn-sm">
-              <span>Deploy on Platform</span>
+              <span>Deploy on Platform (48hr SLA)</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </a>
-            <a href="services.html" class="btn btn-secondary btn-sm">Learn More</a>
+            <a href="services.html" class="btn btn-secondary btn-sm">Explore All Services</a>
           </div>
         </div>
 
@@ -961,14 +1106,14 @@
   ======================================================================== -->
 
   <!-- ========================================================================
-       8. Locana Local Node
+       8. Locana Local Node (3D Orbit Carousel Platform)
        People + Skills + Technology + Assets + Trust
        ======================================================================== -->
   <section class="section-space local-node-section" id="local-node">
     <div class="container container-wide">
 
       <div class="section-header center reveal">
-        <div class="kicker">
+        <div class="kicker kicker-emerald">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="2"></circle>
             <path
@@ -984,201 +1129,46 @@
         </p>
       </div>
 
-      <!-- Interactive Filament Flower Stage -->
-      <div class="local-node-stage reveal" id="local-node-stage">
-
-        <!-- Canvas wrapper -->
-        <div class="filament-flower-wrap" id="filament-flower-wrap">
-          <canvas id="filament-flower-canvas"></canvas>
-
-          <!-- Circular Orbit Ring Reference -->
-          <div class="filament-orbit-track" id="filament-orbit-track" aria-hidden="true"></div>
-
-          <!-- Central Core Hub Badge -->
-          <div class="node-orbit-center" id="node-orbit-center">
-            <div class="center-core-pulse"></div>
-            <div class="center-core-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path
-                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                </path>
-              </svg>
-            </div>
-            <span class="center-core-label">LOCAL NODE</span>
-            <span class="center-core-sub">5 Pillars</span>
-          </div>
-
-          <!-- 5 Orbital Node Items On Circle Outline -->
-          <div class="node-orbit-items" id="node-orbit-items">
-
-            <!-- Node 1: People -->
-            <div class="node-orbit-item" data-node="0" data-angle="-90" style="--node-color: #2563EB;">
-              <button type="button" class="node-anchor-btn" aria-label="People: Locally resident certified teams"
-                aria-expanded="false">
-                <span class="node-ping-ring"></span>
-                <span class="node-anchor-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                  </svg>
-                </span>
-                <span class="node-anchor-pill">
-                  <span class="node-step-tag">01</span>
-                  <span class="node-anchor-name">People</span>
-                </span>
-              </button>
-
-              <!-- Compact Hover Small Card -->
-              <div class="node-hover-card" role="tooltip">
-                <div class="card-pop-header">
-                  <span class="card-pop-name">People</span>
-                  <span class="card-pop-badge">01</span>
-                </div>
-                <p class="card-pop-desc">
-                  Certified enumerators & dialect-fluent teams resident across 225+ districts.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 2: Skills -->
-            <div class="node-orbit-item" data-node="1" data-angle="-18" style="--node-color: #059669;">
-              <button type="button" class="node-anchor-btn" aria-label="Skills: Standardized training and ethics"
-                aria-expanded="false">
-                <span class="node-ping-ring"></span>
-                <span class="node-anchor-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                  </svg>
-                </span>
-                <span class="node-anchor-pill">
-                  <span class="node-step-tag">02</span>
-                  <span class="node-anchor-name">+ Skills</span>
-                </span>
-              </button>
-
-              <!-- Compact Hover Small Card -->
-              <div class="node-hover-card" role="tooltip">
-                <div class="card-pop-header">
-                  <span class="card-pop-name">+ Skills</span>
-                  <span class="card-pop-badge">02</span>
-                </div>
-                <p class="card-pop-desc">
-                  Standardized research ethics, FPIC consent protocols, and CAPI tooling.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 3: Technology -->
-            <div class="node-orbit-item" data-node="2" data-angle="54" style="--node-color: #7C3AED;">
-              <button type="button" class="node-anchor-btn" aria-label="Technology: Mobile fieldwork telemetry"
-                aria-expanded="false">
-                <span class="node-ping-ring"></span>
-                <span class="node-anchor-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                  </svg>
-                </span>
-                <span class="node-anchor-pill">
-                  <span class="node-step-tag">03</span>
-                  <span class="node-anchor-name">+ Technology</span>
-                </span>
-              </button>
-
-              <!-- Compact Hover Small Card -->
-              <div class="node-hover-card" role="tooltip">
-                <div class="card-pop-header">
-                  <span class="card-pop-name">+ Technology</span>
-                  <span class="card-pop-badge">03</span>
-                </div>
-                <p class="card-pop-desc">
-                  Field mobile engine, sub-meter GPS logging, and offline cryptographic sync.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 4: Assets -->
-            <div class="node-orbit-item" data-node="3" data-angle="126" style="--node-color: #D97706;">
-              <button type="button" class="node-anchor-btn" aria-label="Assets: Field devices and micro-hubs"
-                aria-expanded="false">
-                <span class="node-ping-ring"></span>
-                <span class="node-anchor-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
-                  </svg>
-                </span>
-                <span class="node-anchor-pill">
-                  <span class="node-step-tag">04</span>
-                  <span class="node-anchor-name">+ Assets</span>
-                </span>
-              </button>
-
-              <!-- Compact Hover Small Card -->
-              <div class="node-hover-card" role="tooltip">
-                <div class="card-pop-header">
-                  <span class="card-pop-name">+ Assets</span>
-                  <span class="card-pop-badge">04</span>
-                </div>
-                <p class="card-pop-desc">
-                  Verified field devices, RTK/GNSS tools, and district micro-hub logistics.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 5: Trust -->
-            <div class="node-orbit-item" data-node="4" data-angle="198" style="--node-color: #DB2777;">
-              <button type="button" class="node-anchor-btn"
-                aria-label="Trust: Community alignment and institutional credibility" aria-expanded="false">
-                <span class="node-ping-ring"></span>
-                <span class="node-anchor-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
-                </span>
-                <span class="node-anchor-pill">
-                  <span class="node-step-tag">05</span>
-                  <span class="node-anchor-name">+ Trust</span>
-                </span>
-              </button>
-
-              <!-- Compact Hover Small Card -->
-              <div class="node-hover-card" role="tooltip">
-                <div class="card-pop-header">
-                  <span class="card-pop-name">+ Trust</span>
-                  <span class="card-pop-badge">05</span>
-                </div>
-                <p class="card-pop-desc">
-                  Deep Panchayat relationships, community fluency, and zero-friction access.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Quick Selector Pills (Accessible on mobile & quick click) -->
-        <div class="node-quick-nav">
-          <span class="node-quick-hint">Inspect Pillar:</span>
-          <button type="button" class="node-quick-pill active" data-target="0">01 People</button>
-          <button type="button" class="node-quick-pill" data-target="1">02 Skills</button>
-          <button type="button" class="node-quick-pill" data-target="2">03 Technology</button>
-          <button type="button" class="node-quick-pill" data-target="3">04 Assets</button>
-          <button type="button" class="node-quick-pill" data-target="4">05 Trust</button>
-        </div>
-
+      <!-- Navigation Chips for Quick Selection -->
+      <div class="wheel-nav-chips reveal" id="node-chips-container"
+        style="justify-content: center; margin-bottom: 2rem;">
+        <button class="wheel-chip active" data-pillar="people">People</button>
+        <button class="wheel-chip" data-pillar="skills">+ Skills</button>
+        <button class="wheel-chip" data-pillar="technology">+ Technology</button>
+        <button class="wheel-chip" data-pillar="assets">+ Assets</button>
+        <button class="wheel-chip" data-pillar="trust">+ Trust</button>
       </div>
 
-      <!-- Formula Equals Banner (Commented out)
-      <div class="formula-summary-banner reveal">
-        <h3 style="font-size: 1.35rem; color: #FFFFFF; margin-bottom: 0.5rem;">
-          = The Self-Sustaining Last-Mile Operating Unit
-        </h3>
-        <p style="color: rgba(248,250,252,0.8); font-size: 0.9375rem; max-width: 720px; margin: 0 auto;">
-          Every Locana node functions as an autonomous, high-rigor hub ready to execute surveys, audits, skilling workshops, and digital delivery on 48-hour notice.
-        </p>
+      <!-- Framer ArcCardCarousel Component Integration -->
+      <div class="arc-carousel-wrapper reveal">
+        <div class="arc-carousel-container" id="arc-carousel-container" role="region"
+          aria-label="Locana Local Node Arc Card Carousel">
+          <!-- 3D Center Stage Anchor -->
+          <div class="arc-carousel-stage" id="arc-carousel-stage">
+            <!-- Cards rendered dynamically via ArcCardCarousel engine -->
+          </div>
+
+          <!-- Left / Right Navigation Controls -->
+          <button class="arc-nav-btn arc-nav-prev" id="arc-nav-prev" aria-label="Previous Pillar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="arc-nav-btn arc-nav-next" id="arc-nav-next" aria-label="Next Pillar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <!-- Bottom Text as requested -->
+          <div class="arc-carousel-footer">
+            <span class="arc-carousel-drag-hint">Drag to rotate</span>
+            <span class="arc-carousel-eyebrow">5-PILLAR LOCAL NODE ARCHITECTURE</span>
+          </div>
+        </div>
       </div>
-      -->
 
     </div>
   </section>
