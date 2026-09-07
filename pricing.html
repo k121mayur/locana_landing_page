@@ -34,17 +34,17 @@
 
         <nav>
           <ul class="nav-menu">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="about.html" class="nav-link">About Us</a></li>
+            <li><a href="index.html#platform-wheel" class="nav-link">Platform</a></li>
             <li><a href="services.html" class="nav-link">Services</a></li>
-            <li><a href="pricing.html" class="nav-link active">Network & Pricing</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="index.html#who-we-connect" class="nav-link">Network</a></li>
+            <li><a href="index.html#our-impact" class="nav-link">Impact</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
           </ul>
         </nav>
 
         <div class="nav-actions">
-          <a href="pricing.html" class="btn btn-secondary btn-sm">Join as Researcher</a>
-          <a href="contact.html" class="btn btn-primary btn-sm">Deploy Fieldwork</a>
+          <a href="pricing.html" class="btn btn-secondary btn-sm">Join Locana</a>
+          <a href="contact.html" class="btn btn-primary btn-sm">Deploy Locana</a>
           <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -58,15 +58,24 @@
   </header>
 
   <!-- Mobile Drawer Menu -->
-  <div class="mobile-drawer">
-    <a href="index.html" class="nav-link">Home</a>
-    <a href="about.html" class="nav-link">About Us</a>
-    <a href="services.html" class="nav-link">Services & Verticals</a>
-    <a href="pricing.html" class="nav-link active">Network Tiers & Pricing</a>
-    <a href="contact.html" class="nav-link">Contact & Dispatch</a>
-    <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
-      <a href="pricing.html" class="btn btn-secondary">Join as Certified Researcher</a>
-      <a href="contact.html" class="btn btn-primary">Deploy Field Intelligence</a>
+  <div class="mobile-drawer" role="dialog" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-inner">
+      <div style="margin-bottom: 1.25rem; padding-bottom: 0.85rem; border-bottom: 1px solid rgba(226, 232, 240, 0.7);">
+        <a href="index.html" class="brand-logo-link" aria-label="Locana Homepage">
+          <img src="assets/images/locana-logo.svg" alt="Locana Logo" class="brand-logo-img">
+        </a>
+      </div>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html#platform-wheel">Platform</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="index.html#who-we-connect">Network</a></li>
+        <li><a href="index.html#our-impact">Impact</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="mobile-nav-actions">
+        <a href="pricing.html" class="btn btn-secondary" style="width: 100%;">Join Locana</a>
+        <a href="contact.html" class="btn btn-primary" style="width: 100%;">Deploy Locana</a>
+      </div>
     </div>
   </div>
 
@@ -369,7 +378,7 @@
         </div>
         <h2 class="section-title">Enterprise & Retainer Models</h2>
         <p class="section-subtitle" style="margin: 0 auto;">
-          Whether you need a rapid 48-hour spot audit or an ongoing multi-state impact monitoring fleet, our contracts are structured for donor and government procurement standards.
+          Whether you need a rapid spot audit or an ongoing multi-state impact monitoring fleet, our contracts are structured for donor and government procurement standards.
         </p>
       </div>
 
@@ -408,60 +417,106 @@
        Global Footer
        ======================================================================== -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="container container-wide">
       <div class="footer-top-grid">
+        
+        <!-- Brand Column -->
         <div class="footer-brand">
           <img src="assets/images/locana-logo-white.svg" alt="Locana Logo" style="height: 38px; width: auto;">
-          <p>
-            Converting last-mile human presence into dependable, ethical, verified ground truth for institutions across India.
+          <p style="font-weight: 700; color: #FFFFFF; margin-top: 1rem; margin-bottom: 0.25rem;">
+            Your Trusted Local Partner.
           </p>
-          <div style="margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--emerald-400);">
-            “Local roots, National network”
+          <p style="font-size: 0.875rem; line-height: 1.5; color: rgba(248, 250, 252, 0.7); margin-top: 0;">
+            Local People. Real Connections. Lasting Impact.
+          </p>
+          <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--blue-400);">
+            Local roots. National network.
           </div>
         </div>
 
+        <!-- 1. Platform -->
         <div>
-          <h4 class="footer-heading">Service Lines</h4>
+          <h4 class="footer-heading">Platform</h4>
           <ul class="footer-links">
-            <li><a href="services.html#decision-intelligence">Decision Intelligence</a></li>
-            <li><a href="services.html#vernacular-ai">Vernacular AI Engineering</a></li>
-            <li><a href="services.html#geospatial">Geospatial Ground-Truthing</a></li>
-            <li><a href="services.html#credit-risk">Credit & Risk Scoring</a></li>
-            <li><a href="services.html#digital-inclusion">Digital Inclusion</a></li>
-            <li><a href="services.html#skilling">Frontline Skilling</a></li>
+            <li><a href="index.html#platform-wheel">7-Part Platform</a></li>
+            <li><a href="index.html#how-it-works">How Locana Works</a></li>
+            <li><a href="index.html#local-node">Local Node</a></li>
           </ul>
         </div>
 
+        <!-- 2. Services -->
         <div>
-          <h4 class="footer-heading">Platform & Network</h4>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#services-capabilities">Intelligence</a></li>
+            <li><a href="index.html#services-capabilities">Implementation</a></li>
+            <li><a href="index.html#services-capabilities">Access & Commerce</a></li>
+            <li><a href="index.html#services-capabilities">Reach & Mobility</a></li>
+          </ul>
+        </div>
+
+        <!-- 3. Network -->
+        <div>
+          <h4 class="footer-heading">Network</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#who-we-connect">Who We Connect</a></li>
+            <li><a href="index.html#who-we-connect">Who We Reach</a></li>
+            <li><a href="pricing.html">Join Locana</a></li>
+          </ul>
+        </div>
+
+        <!-- 4. Impact -->
+        <div>
+          <h4 class="footer-heading">Impact</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#our-impact">Impact Areas</a></li>
+            <li><a href="services.html#case-studies">Case Studies</a></li>
+            <li><a href="index.html#numbers-metrics">By the Numbers</a></li>
+          </ul>
+        </div>
+
+        <!-- 5. About -->
+        <div>
+          <h4 class="footer-heading">About</h4>
           <ul class="footer-links">
             <li><a href="about.html">About Locana</a></li>
-            <li><a href="pricing.html">6-Tier Membership</a></li>
-            <li><a href="pricing.html#calculator">Earnings Calculator</a></li>
-            <li><a href="about.html#ethics">Ethical Charter & FPIC</a></li>
-            <li><a href="contact.html">Regional Hubs</a></li>
-            <li><a href="contact.html#faqs">Knowledgebase & FAQs</a></li>
+            <li><a href="about.html#ethics">Ethical Charter</a></li>
+            <li><a href="about.html#privacy">Data & Privacy</a></li>
           </ul>
         </div>
 
+        <!-- 6. Contact & Desk -->
         <div>
-          <h4 class="footer-heading">Central Coordination</h4>
-          <p style="font-size: 0.875rem; color: rgba(244,250,247,0.7); line-height: 1.6; margin-bottom: 1rem;">
-            Institutional Business Development & Network Management Cell
+          <h4 class="footer-heading">Contact Desk</h4>
+          <p style="font-size: 0.8125rem; color: rgba(248,250,252,0.7); line-height: 1.5; margin-bottom: 0.75rem;">
+            Central Coordination / Deployment Desk
           </p>
-          <a href="mailto:contact@locana.co.in" style="color: var(--emerald-400); font-family: var(--font-mono); font-size: 0.875rem; display: block; margin-bottom: 0.5rem;">
-            contact@locana.co.in
+          <a href="mailto:contact@locana.network" style="color: var(--blue-400); font-family: var(--font-mono); font-size: 0.8125rem; display: block; margin-bottom: 0.75rem;">
+            contact@locana.network
           </a>
-          <span class="badge badge-dark">48-Hour Response SLA</span>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <a href="contact.html" class="btn btn-primary btn-sm" style="font-size: 0.75rem; padding: 0.4rem 0.8rem; justify-content: center;">
+              <span>Deploy Locana</span>
+            </a>
+            <a href="contact.html" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.4rem 0.8rem; justify-content: center; background: rgba(255,255,255,0.08); color: #FFFFFF; border-color: rgba(255,255,255,0.2);">
+              <span>General Enquiries</span>
+            </a>
+          </div>
         </div>
+
       </div>
 
+      <!-- Legal Links & Copyright -->
       <div class="footer-bottom">
-        <div>© 2026 Locana Ground Truth Network. All rights reserved. · Developed by <a href="https://www.siliconmango.com" target="_blank" rel="noopener" style="color: var(--blue-500); font-weight: 600;">Silicon Mango</a></div>
-        <div style="display: flex; gap: 1.5rem;">
+        <div>
+          Copyright © 2026 Locana. All rights reserved. · Developed by <a href="https://www.siliconmango.com" target="_blank" rel="noopener" style="color: var(--blue-400); font-weight: 600;">Silicon Mango</a>
+        </div>
+        <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+          <a href="about.html#privacy">Privacy Policy</a>
+          <a href="about.html#terms">Terms of Use</a>
+          <a href="about.html#data-governance">Data Protection / Data Governance</a>
           <a href="about.html#ethics">Ethical Charter</a>
-          <a href="about.html#privacy">Data Dignity & FPIC</a>
-          <a href="contact.html">Contact Us</a>
+          <a href="about.html#consent">Consent / Community Engagement Principles</a>
         </div>
       </div>
     </div>

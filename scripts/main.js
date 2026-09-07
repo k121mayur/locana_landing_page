@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounterUp();
   initFaqAccordion();
   initPlatformFilamentFlower();
-  initArcCardCarousel();
+  initWorkflowToggle();
+  initOrbitrailCarousel();
   initSmoothScroll();
 });
 
@@ -166,12 +167,12 @@ function initPlatformFilamentFlower() {
   const canvas = document.getElementById('platform-flower-canvas');
   const trackEl = document.getElementById('platform-orbit-track');
   const orbitItems = document.querySelectorAll('#platform-orbit-items .node-orbit-item');
-  const chips = document.querySelectorAll('#platform-chips-container .wheel-chip');
   const badgeTextEl = document.getElementById('platform-badge-text');
   const badgeEl = document.getElementById('platform-badge');
   const titleEl = document.getElementById('platform-title');
   const descEl = document.getElementById('platform-desc');
   const capabilitiesEl = document.getElementById('platform-capabilities');
+  const detailsCard = document.getElementById('platform-details-content');
 
   if (!wrap || !canvas) return;
 
@@ -182,116 +183,123 @@ function initPlatformFilamentFlower() {
     {
       key: 'ground-truth',
       num: '01',
-      badge: 'Pillar 01 · Verification Workflow',
+      badge: 'Pillar 01 · Ground Truth',
       badgeClass: 'badge-blue',
-      strokeColor: '#2563EB',
-      title: 'HOW GROUND TRUTHING WORKS?',
-      desc: 'A seamless 6-step verification lifecycle transforming complex institutional requirements into auditable primary ground intelligence.',
-      steps: [
-        { num: '01', name: 'Post', desc: 'Institution submits target geography, sample quotas, protocol guidelines & timelines.' },
-        { num: '02', name: 'Match', desc: 'Locana engine matches requirement to certified local node leads & dialect-fluent teams.' },
-        { num: '03', name: 'Assign', desc: 'Standardized CAPI digital forms, geofenced clusters & protocol briefings deployed.' },
-        { num: '04', name: 'Execute', desc: 'Local researchers conduct field tasks with 100% FPIC consent & live GPS telemetry logging.' },
-        { num: '05', name: 'Verify', desc: 'Automated logic checks, cryptographic timestamp hashes & mandatory 10% supervisor back-checks.' },
-        { num: '06', name: 'Pay', desc: 'Instant, transparent payouts directly to certified local field professionals upon QC clearance.' }
-      ]
-    },
-    {
-      key: 'elevate',
-      num: '02',
-      badge: 'Pillar 02 · Skilling & Capacity',
-      badgeClass: 'badge-emerald',
-      strokeColor: '#059669',
-      title: 'Elevate',
-      desc: 'Continuous frontline capacity building and credentialing. Standardizing research ethics, digital literacy, and field protocol execution for thousands of rural enumerators.',
+      strokeColor: '#173E9A',
+      title: 'Ground Truth',
+      desc: 'Reliable primary intelligence from the ground.',
       capabilities: [
-        'Structured certification modules across 6 professional tiers',
-        '100% Fee-Back credentialing model on first paid assignment',
-        'Vernacular interactive training in 20+ regional languages'
-      ]
-    },
-    {
-      key: 'sage',
-      num: '03',
-      badge: 'Pillar 03 · Intelligence & Advisory',
-      badgeClass: 'badge-purple',
-      strokeColor: '#7C3AED',
-      title: 'Sage',
-      desc: 'Domain-specific evaluation design, econometric modeling, and AI advisory. Bridging multilateral donor mandates with ground execution realities.',
-      capabilities: [
-        'Quasi-experimental impact evaluations & RCT protocol design',
-        'PMFBY-aligned yield assessment algorithms & crop cutting science',
-        'Multi-modal vernacular AI training datasets & acoustic phonetics'
-      ]
-    },
-    {
-      key: 'roots',
-      num: '04',
-      badge: 'Pillar 04 · Community Fluency',
-      badgeClass: 'badge-amber',
-      strokeColor: '#D97706',
-      title: 'Roots',
-      desc: 'Deep community embeddedness and cultural fluency. Local researchers living in the target blocks ensure authentic access, elder consent, and zero resistance.',
-      capabilities: [
-        'Dialect-matched interviewer pairing across 150+ dialects',
-        'Gender-matched fieldwork for sensitive health & SHG programs',
-        'Panchayat & local leadership liaison for uninterrupted access'
-      ]
-    },
-    {
-      key: 'reach',
-      num: '05',
-      badge: 'Pillar 05 · Pan-India Logistics',
-      badgeClass: 'badge-blue',
-      strokeColor: '#0284C7',
-      title: 'Reach',
-      desc: 'Pan-India physical mobility and rapid field mobilization across 225+ districts, tribal forest belts, and digital dark zones within 48 hours.',
-      capabilities: [
-        'Turnkey 48-hour mobilization across 25 states & union territories',
-        'Offline-first mobile CAPI tools with asynchronous sync',
-        'Distributed micro-hub logistics for physical sample collection'
-      ]
-    },
-    {
-      key: 'connect',
-      num: '06',
-      badge: 'Pillar 06 · Network Orchestration',
-      badgeClass: 'badge-amber',
-      strokeColor: '#EA580C',
-      title: 'Connect',
-      desc: 'Two-sided network coordination linking institutional mandates (Govt, CSR, AI labs, Corporates) directly to verified local grassroots capacity.',
-      capabilities: [
-        'Automated algorithmic matching by geography, dialect, and tier',
-        'Unified client portal with live quota completion telemetry',
-        'Transparent direct payouts to local field professionals'
+        'Verify',
+        'Survey',
+        'Audit',
+        'Monitor',
+        'Annotate'
       ]
     },
     {
       key: 'access',
-      num: '07',
-      badge: 'Pillar 07 · Digital & Financial Inclusion',
-      badgeClass: 'badge-purple',
-      strokeColor: '#4F46E5',
+      num: '02',
+      badge: 'Pillar 02 · Access',
+      badgeClass: 'badge-blue',
+      strokeColor: '#173E9A',
       title: 'Access',
-      desc: 'Unlocking Digital Public Infrastructure (DPI), essential public services, formal financial credit, and government entitlements for last-mile citizens.',
+      desc: 'Connect people to information, services, schemes and opportunities.',
       capabilities: [
-        'DPI enablement & assisted onboarding for rural households',
-        'FPO/SHG financial grading unlocking formal banking credit',
-        'Direct citizen feedback loops for evidence-based policy corrections'
+        'Link',
+        'Include',
+        'Enable',
+        'Support'
+      ]
+    },
+    {
+      key: 'connect',
+      num: '03',
+      badge: 'Pillar 03 · Connect',
+      badgeClass: 'badge-amber',
+      strokeColor: '#F28C28',
+      title: 'Connect',
+      desc: 'Meaningful connections between local ecosystems and institutions/markets.',
+      capabilities: [
+        'Market',
+        'Partnership',
+        'Showcase',
+        'Network'
+      ]
+    },
+    {
+      key: 'reach',
+      num: '04',
+      badge: 'Pillar 04 · Reach',
+      badgeClass: 'badge-teal',
+      strokeColor: '#008C7A',
+      title: 'Reach',
+      desc: 'Extend products, services and execution to the last mile.',
+      capabilities: [
+        'Deliver',
+        'Distribute',
+        'Logistics',
+        'Fulfil'
+      ]
+    },
+    {
+      key: 'roots',
+      num: '05',
+      badge: 'Pillar 05 · Roots',
+      badgeClass: 'badge-amber',
+      strokeColor: '#F28C28',
+      title: 'Roots',
+      desc: 'Build durable local relationships and understand local ecosystems.',
+      capabilities: [
+        'Discover',
+        'Strengthen',
+        'Communities',
+        'Institutions'
+      ]
+    },
+    {
+      key: 'sage',
+      num: '06',
+      badge: 'Pillar 06 · Sage',
+      badgeClass: 'badge-purple',
+      strokeColor: '#6D43B5',
+      title: 'Sage',
+      desc: 'Turn field knowledge into evidence, insight and better decisions.',
+      capabilities: [
+        'Research',
+        'Insights',
+        'Expertise',
+        'Advisory'
+      ]
+    },
+    {
+      key: 'elevate',
+      num: '07',
+      badge: 'Pillar 07 · Elevate',
+      badgeClass: 'badge-emerald',
+      strokeColor: '#2E9E4D',
+      title: 'Elevate',
+      desc: 'Build local capability and create pathways to better work and outcomes.',
+      capabilities: [
+        'Assess',
+        'Upskill',
+        'Empower',
+        'Train',
+        'Certify',
+        'Deploy'
       ]
     }
   ];
 
   // Filament flower configuration matching Framer component specs for 7 Platform Pillars
   const cfg = {
-    lineColor: '#2563EB',
-    labelColor: '#1D4ED8',
+    lineColor: '#173E9A',
+    labelColor: '#0B2B6B',
     nodes: 140,
     petals: 7,
     curve: 0.88,
     drift: 0.38,
     spin: 0.014,
-    lineOpacity: 0.28,
+    lineOpacity: 0.52,
     ringDots: true,
     waveSpeed: 2.2,
     waveDensity: 3,
@@ -301,13 +309,13 @@ function initPlatformFilamentFlower() {
     showLabels: true,
     labels: [
       'GROUND TRUTH · VERIFICATION',
-      'ELEVATE · 6-TIER SKILLING',
+      'ELEVATE · PROFESSIONAL SKILLING',
       'SAGE · AI & ECONOMETRICS',
       'ROOTS · 150+ DIALECTS',
       'REACH · 225+ DISTRICTS',
       'CONNECT · TWO-SIDED NETWORK',
       'ACCESS · DPI & INCLUSION',
-      '48-HR SLA TURNAROUND'
+      'RAPID DEPLOYMENT NETWORK'
     ],
     labelSize: 10,
     trailingDots: false
@@ -349,8 +357,8 @@ function initPlatformFilamentFlower() {
 
   function measure() {
     const r = wrap.getBoundingClientRect();
-    W = Math.max(1, r.width);
-    H = Math.max(1, r.height);
+    W = Math.max(r.width, 340);
+    H = Math.max(r.height, 460);
     DPR = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.round(W * DPR);
     canvas.height = Math.round(H * DPR);
@@ -385,11 +393,11 @@ function initPlatformFilamentFlower() {
     }
 
     const ws = (t / 1000) * cfg.waveSpeed;
-    const dotR = Math.max(1.2, R * 0.006);
+    const dotR = Math.max(1.8, R * 0.009);
 
     ctx.clearRect(0, 0, W, H);
     ctx.globalCompositeOperation = 'source-over';
-    ctx.lineWidth = 1.15;
+    ctx.lineWidth = 1.45;
     ctx.lineCap = 'round';
     ctx.strokeStyle = cfg.lineColor;
 
@@ -435,10 +443,10 @@ function initPlatformFilamentFlower() {
         const x0 = bx[s] + nx * k0, y0 = by[s] + ny * k0;
         const x1 = bx[s + 1] + nx * k1, y1 = by[s + 1] + ny * k1;
         const um = (u0 + u1) / 2;
-        const grad = 1 - 0.62 * um;
-        const wave = 0.45 + 0.55 * Math.sin(um * cfg.waveDensity * Math.PI - ws + nd.jitter * 30);
+        const grad = 1 - 0.5 * um;
+        const wave = 0.5 + 0.5 * Math.sin(um * cfg.waveDensity * Math.PI - ws + nd.jitter * 30);
 
-        ctx.globalAlpha = cfg.lineOpacity * nd.bright * grad * Math.max(0, wave);
+        ctx.globalAlpha = cfg.lineOpacity * nd.bright * grad * Math.max(0.2, wave);
         ctx.beginPath();
         ctx.moveTo(x0, y0);
         ctx.lineTo(x1, y1);
@@ -491,115 +499,74 @@ function initPlatformFilamentFlower() {
       ctx.font = `${px.toFixed(0)}px ${LABEL_STACK}`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillStyle = cfg.labelColor;
 
       for (const l of active) {
-        const p = (t - l.born) / l.life;
-        ctx.globalAlpha = animate ? 0.75 * Math.sin(p * Math.PI) : 0.6;
-        const aa = l.ang + rot;
-        const lr = R * 1.08;
-        ctx.fillText((l.text || '') + (cfg.trailingDots ? '...' : ''), cx + Math.cos(aa) * lr, cy + Math.sin(aa) * lr);
+        const age = t - l.born;
+        const u = Math.max(0, Math.min(1, age / l.life));
+        const fade = Math.sin(u * Math.PI);
+        const curA = l.ang + rot * 0.4;
+        const lx = cx + Math.cos(curA) * (R * 1.08);
+        const ly = cy + Math.sin(curA) * (R * 1.08);
+
+        ctx.fillStyle = cfg.labelColor || '#0B2B6B';
+        ctx.globalAlpha = 0.85 * fade;
+        ctx.fillText(l.text, lx, ly);
       }
       ctx.globalAlpha = 1;
     }
   }
 
-  // Animation Loop
-  const loop = (t) => {
-    if (isVisible) {
-      render(t, true);
-      raf = requestAnimationFrame(loop);
-    }
-  };
+  function loop(t) {
+    if (!isVisible) return;
+    render(t, true);
+    raf = requestAnimationFrame(loop);
+  }
 
-  const startLoop = () => {
-    if (!raf) {
-      lastT = 0;
-      raf = requestAnimationFrame(loop);
-    }
-  };
-
-  const stopLoop = () => {
-    if (raf) {
-      cancelAnimationFrame(raf);
-      raf = 0;
-    }
-  };
-
-  // Mouse / Pointer Interaction
-  const handlePointerMove = (e) => {
-    const r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left;
-    mouse.y = e.clientY - r.top;
+  // Pointer interaction
+  function updatePointer(e) {
+    const r = wrap.getBoundingClientRect();
+    const touch = e.touches ? e.touches[0] : e;
+    mouse.x = touch.clientX - r.left;
+    mouse.y = touch.clientY - r.top;
     mouse.on = true;
-  };
+  }
 
-  const handlePointerLeave = () => {
+  wrap.addEventListener('pointerenter', (e) => {
+    updatePointer(e);
+  });
+
+  wrap.addEventListener('pointermove', (e) => {
+    updatePointer(e);
+  });
+
+  wrap.addEventListener('pointerleave', () => {
     mouse.on = false;
-  };
+  });
 
-  wrap.addEventListener('pointermove', handlePointerMove);
-  wrap.addEventListener('pointerdown', handlePointerMove);
-  wrap.addEventListener('pointerleave', handlePointerLeave);
-
-  // Setup Observer & Resize
-  measure();
-  buildNodes(cfg.nodes);
-  render(0, false);
-
-  if (window.ResizeObserver) {
-    const ro = new ResizeObserver(() => {
-      measure();
-    });
-    ro.observe(wrap);
-  } else {
-    window.addEventListener('resize', measure);
-  }
-
-  if (window.IntersectionObserver) {
-    const io = new IntersectionObserver((entries) => {
-      isVisible = entries[0].isIntersecting;
-      if (isVisible) startLoop();
-      else stopLoop();
-    }, { threshold: 0.1 });
-    io.observe(wrap);
-  } else {
-    startLoop();
-  }
-
-  // Orbital Nodes, Chips & Right-Side Details Card Interactions
-  let activePillarKey = 'ground-truth';
-
+  // Dynamic Details Card Updation
   function updateDetails(key) {
     const data = platformPillars.find(p => p.key === key);
     if (!data) return;
-    activePillarKey = key;
 
-    // Update active state on flower orbital items
-    orbitItems.forEach((item) => {
-      const isCurrent = item.getAttribute('data-pillar') === key;
-      item.classList.toggle('active', isCurrent);
-      const btn = item.querySelector('.node-anchor-btn');
-      if (btn) btn.setAttribute('aria-expanded', isCurrent ? 'true' : 'false');
-      if (isCurrent) {
-        const angleDeg = parseFloat(item.getAttribute('data-angle')) || 0;
-        const rad = (angleDeg * Math.PI) / 180;
-        mouse.x = cx + Math.cos(rad) * R * 0.85;
-        mouse.y = cy + Math.sin(rad) * R * 0.85;
-        mouse.on = true;
+    if (data.strokeColor) {
+      cfg.lineColor = data.strokeColor;
+      cfg.labelColor = data.strokeColor;
+    }
+
+    // Update active node styling
+    orbitItems.forEach(item => {
+      if (item.getAttribute('data-pillar') === key) {
+        item.classList.add('active');
+        item.style.zIndex = '10';
+      } else {
+        item.classList.remove('active');
+        item.style.zIndex = '5';
       }
     });
 
-    // Update active state on chips
-    chips.forEach(chip => {
-      chip.classList.toggle('active', chip.getAttribute('data-pillar') === key);
-    });
-
-    // Update right-side details card
-    const detailsCard = document.getElementById('platform-details-content');
     if (detailsCard) {
-      detailsCard.style.opacity = '0.7';
-      detailsCard.style.transform = 'translateY(4px)';
+      detailsCard.style.opacity = '0';
+      detailsCard.style.transform = 'translateY(6px)';
 
       setTimeout(() => {
         if (badgeTextEl) badgeTextEl.textContent = data.badge;
@@ -608,26 +575,14 @@ function initPlatformFilamentFlower() {
         if (descEl) descEl.textContent = data.desc;
 
         if (capabilitiesEl) {
-          if (key === 'ground-truth' && data.steps) {
-            capabilitiesEl.innerHTML = `
-              <div class="gt-steps-grid">
-                ${data.steps.map(step => `
-                  <div class="gt-step-item">
-                    <div class="gt-step-header">
-                      <span class="gt-step-num">STEP ${step.num}</span>
-                      <span class="gt-step-name">${step.name}</span>
-                    </div>
-                    <p class="gt-step-desc">${step.desc}</p>
-                  </div>
-                `).join('')}
-              </div>
-            `;
-          } else if (data.capabilities) {
+          if (data.capabilities) {
             capabilitiesEl.innerHTML = `
               <ul class="wheel-capabilities-list">
                 ${data.capabilities.map(cap => `
                   <li>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${data.strokeColor}" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="cap-check-icon" style="background: ${data.strokeColor}15; color: ${data.strokeColor};">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
                     <span>${cap}</span>
                   </li>
                 `).join('')}
@@ -676,252 +631,290 @@ function initPlatformFilamentFlower() {
     });
   });
 
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      const key = chip.getAttribute('data-pillar');
-      updateDetails(key);
+  // ResizeObserver for reliable canvas dimensions
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(() => {
+      measure();
     });
-  });
+    ro.observe(wrap);
+  }
+
+  // IntersectionObserver for performance
+  if (window.IntersectionObserver) {
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible && !raf) {
+        raf = requestAnimationFrame(loop);
+      } else if (!isVisible && raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    }, { threshold: 0.1 });
+    observer.observe(wrap);
+  }
+
+  window.addEventListener('resize', measure, { passive: true });
+
+  measure();
+  buildNodes(cfg.nodes);
+  raf = requestAnimationFrame(loop);
 
   // Initial display setup
   updateDetails('ground-truth');
 }
 
 /* ==========================================================================
-   8. Locana Local Node — Framer ArcCardCarousel Component
-   Infinite 3D Arc Card Carousel with Dynamic Y-Tilt and Magnetic Snap
-   Data: People, + Skills, + Technology, + Assets, + Trust
+   7. How Locana Works — Ground Truth Workflow Accordion
    ========================================================================== */
-function initArcCardCarousel() {
-  const container = document.getElementById('arc-carousel-container');
-  const stage = document.getElementById('arc-carousel-stage');
+function initWorkflowToggle() {
+  const toggleBtn = document.getElementById('gt-accordion-toggle');
+  const box = document.getElementById('gt-accordion');
+  if (!toggleBtn || !box) return;
+
+  toggleBtn.addEventListener('click', () => {
+    const isExpanded = box.classList.toggle('is-expanded');
+    toggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+  });
+}
+
+/* ==========================================================================
+   8. Locana Local Node — Framer Orbitrail Carousel Component
+   (https://framer.com/m/OrbitrailCarousel-3Z5nfB.js@nHEmjPvyiUtKJ2GbRnrG)
+   Elliptical Orbital Carousel with Animated Guide Path, Core Anchor & Physics
+   Pillars:
+   Pillar 1 - People: Local professionals with geographic and community familiarity.
+   Pillar 2 - Skills: Domain, fieldwork, digital and service-specific capabilities.
+   Pillar 3 - Technology: Mobile tools, communication, workflow, verification and reporting.
+   Pillar 4 - Assets: Local access, mobility, devices, relationships and practical resources.
+   Pillar 5 - Trust: Community familiarity, ethical engagement and accountable execution.
+   ========================================================================== */
+function initOrbitrailCarousel() {
+  const container = document.getElementById('orbitrail-container');
+  const stage = document.getElementById('orbitrail-stage');
+  const guidePathEl = document.getElementById('orbitrail-guide-path');
+  const guideSvgEl = document.getElementById('orbitrail-guide-svg');
   const chips = document.querySelectorAll('#node-chips-container .wheel-chip');
-  const prevBtn = document.getElementById('arc-nav-prev');
-  const nextBtn = document.getElementById('arc-nav-next');
+  const prevBtn = document.getElementById('orbitrail-nav-prev');
+  const nextBtn = document.getElementById('orbitrail-nav-next');
+  const cards = Array.from(document.querySelectorAll('#orbitrail-stage .orbitrail-card'));
 
-  if (!container || !stage) return;
+  if (!container || !stage || cards.length === 0) return;
 
-  const pillarData = [
-    {
-      key: 'people',
-      num: '01',
-      code: '001',
-      title: 'People',
-      category: 'Frontline Talent',
-      accentColor: '#2563EB',
-      image: 'assets/images/hero_field_network.jpg',
-      desc: 'Locally resident, certified enumerators, supervisors, and community coordinators who live in the district.'
-    },
-    {
-      key: 'skills',
-      num: '02',
-      code: '002',
-      title: '+ Skills',
-      category: 'Ethics & Protocols',
-      accentColor: '#059669',
-      image: 'assets/images/frontline_skilling_workshop.jpg',
-      desc: 'Standardized training in research ethics, FPIC consent protocols, survey methodologies, and digital tools.'
-    },
-    {
-      key: 'technology',
-      num: '03',
-      code: '003',
-      title: '+ Technology',
-      category: 'Mobile Telemetry & CAPI',
-      accentColor: '#7C3AED',
-      image: 'assets/images/locana_tech_telemetry.jpg',
-      desc: 'Locana mobile fieldwork application, GPS geofencing, real-time telemetry, and offline-first CAPI data sync.'
-    },
-    {
-      key: 'assets',
-      num: '04',
-      code: '004',
-      title: '+ Assets',
-      category: 'Hardware & Micro-Hubs',
-      accentColor: '#D97706',
-      image: 'assets/images/geospatial_agri_survey.jpg',
-      desc: 'Verified field devices, RTK/GNSS tools, local transport networks, and micro-hub logistics nodes.'
-    },
-    {
-      key: 'trust',
-      num: '05',
-      code: '005',
-      title: '+ Trust',
-      category: 'Community Capital',
-      accentColor: '#DB2777',
-      image: 'assets/images/vernacular_ai_voice.jpg',
-      desc: 'Deep community roots, Panchayat relationships, cultural alignment, and institutional credibility.'
+  const numCards = cards.length; // 5
+  const stepAngle = 360 / numCards; // 72 deg
+  const START_ANGLE = 90; // 90 degrees places Pillar 1 at the bottom/front center
+  const GUIDE_SEGMENTS = 96;
+
+  function getOrbitPoint(angle, radius, horizontal, vertical, skewX, skewY) {
+    const radians = (angle * Math.PI) / 180;
+    const ellipseX = Math.cos(radians) * radius * horizontal;
+    const ellipseY = Math.sin(radians) * radius * vertical;
+    return {
+      x: ellipseX + ellipseY * skewX,
+      y: ellipseY + ellipseX * skewY
+    };
+  }
+
+  function getGuidePath(radius, horizontal, vertical, skewX, skewY) {
+    return Array.from({ length: GUIDE_SEGMENTS }, (_, index) => {
+      const point = getOrbitPoint((index * 360) / GUIDE_SEGMENTS, radius, horizontal, vertical, skewX, skewY);
+      return `${index === 0 ? 'M' : 'L'} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`;
+    }).join(' ');
+  }
+
+  function getGuidePathLength(radius, horizontal, vertical, skewX, skewY) {
+    let length = 0;
+    const first = getOrbitPoint(0, radius, horizontal, vertical, skewX, skewY);
+    let previous = first;
+    for (let index = 1; index < GUIDE_SEGMENTS; index += 1) {
+      const point = getOrbitPoint((index * 360) / GUIDE_SEGMENTS, radius, horizontal, vertical, skewX, skewY);
+      length += Math.hypot(point.x - previous.x, point.y - previous.y);
+      previous = point;
     }
-  ];
+    length += Math.hypot(first.x - previous.x, first.y - previous.y);
+    return Math.max(1, length);
+  }
 
-  // Tile items twice (10 items) for a continuous 360-degree seamless infinite arc
-  const items = [...pillarData, ...pillarData];
-  const count = items.length;
+  function getSeamlessGuideGap(pathLength, dash, gap) {
+    if (dash <= 0 || gap <= 0) return gap;
+    const cycleCount = Math.max(1, Math.round(pathLength / (dash + gap)));
+    return Math.max(0, pathLength / cycleCount - dash);
+  }
+
+  function getNormalizedAngleDelta(delta) {
+    if (delta > 180) return delta - 360;
+    if (delta < -180) return delta + 360;
+    return delta;
+  }
 
   function getGeometry() {
     const w = window.innerWidth;
     if (w <= 640) {
       return {
-        radius: 750,
-        spacing: 19,
-        cardWidth: 230,
-        cardHeight: 335,
-        arcOffset: 195,
-        tiltAmount: 14,
+        radius: 175,
+        horizontal: 0.96,
+        vertical: 0.80,
+        skewX: 0,
+        skewY: 0,
+        speed: 5.5,
         sensitivity: 1.15
       };
     } else if (w <= 1024) {
       return {
-        radius: 1120,
-        spacing: 14,
-        cardWidth: 260,
-        cardHeight: 375,
-        arcOffset: 220,
-        tiltAmount: 17,
+        radius: 260,
+        horizontal: 1.28,
+        vertical: 0.68,
+        skewX: 0,
+        skewY: 0,
+        speed: 4.5,
         sensitivity: 1.05
       };
     } else {
       return {
-        radius: 1400,
-        spacing: 11.8,
-        cardWidth: 282,
-        cardHeight: 395,
-        arcOffset: 235,
-        tiltAmount: 20,
+        radius: 320,
+        horizontal: 1.42,
+        vertical: 0.64,
+        skewX: 0,
+        skewY: 0,
+        speed: 4.0,
         sensitivity: 1.0
       };
     }
   }
 
   let geo = getGeometry();
+  let pathLength = 1;
 
-  // Math helper functions mirroring Framer ArcCardCarousel specs
-  function wrapAngle(deg, period) {
-    const half = period / 2;
-    let a = deg % period;
-    if (a < -half) a += period;
-    if (a >= half) a -= period;
-    return a;
+  function updateGuideSvg() {
+    if (!guideSvgEl || !guidePathEl) return;
+    const guidePadding = 24;
+    const guideWidth = geo.radius * (geo.horizontal + Math.abs(geo.skewX) * geo.vertical) * 2;
+    const guideHeight = geo.radius * (geo.vertical + Math.abs(geo.skewY) * geo.horizontal) * 2;
+    const guideViewWidth = Math.max(1, guideWidth + guidePadding * 2);
+    const guideViewHeight = Math.max(1, guideHeight + guidePadding * 2);
+
+    guideSvgEl.setAttribute('viewBox', `${-guideViewWidth / 2} ${-guideViewHeight / 2} ${guideViewWidth} ${guideViewHeight}`);
+    guideSvgEl.style.width = `${guideViewWidth}px`;
+    guideSvgEl.style.height = `${guideViewHeight}px`;
+
+    const guidePath = getGuidePath(geo.radius, geo.horizontal, geo.vertical, geo.skewX, geo.skewY);
+    guidePathEl.setAttribute('d', `${guidePath} Z`);
+
+    pathLength = getGuidePathLength(geo.radius, geo.horizontal, geo.vertical, geo.skewX, geo.skewY);
+    const seamlessGap = getSeamlessGuideGap(pathLength, 6, 8);
+    guidePathEl.setAttribute('stroke-dasharray', `6 ${seamlessGap.toFixed(2)}`);
   }
 
-  function cardTransform(theta, tilt, radius) {
-    const rad = (theta * Math.PI) / 180;
-    const x = radius * Math.sin(rad);
-    const y = -radius * Math.cos(rad);
-    return `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0) rotateZ(${theta}deg) rotateY(${tilt}deg)`;
-  }
+  updateGuideSvg();
 
-  function cardOpacity(theta, fadeStart, fadeEnd) {
-    const t = Math.abs(theta);
-    if (t <= fadeStart) return 1;
-    if (t >= fadeEnd) return 0;
-    return 1 - (t - fadeStart) / (fadeEnd - fadeStart);
-  }
-
-  // Build card DOM elements
-  stage.innerHTML = '';
-  const cardEls = [];
-
-  items.forEach((item, i) => {
-    const card = document.createElement('div');
-    card.className = 'arc-card';
-    card.setAttribute('data-pillar', item.key);
-    card.setAttribute('data-index', i);
-    card.style.setProperty('--card-accent', item.accentColor);
-    card.style.width = `${geo.cardWidth}px`;
-    card.style.height = `${geo.cardHeight}px`;
-
-    card.innerHTML = `
-      <div class="arc-card-inner">
-        <div class="arc-card-media-wrap">
-          <img src="${item.image}" alt="${item.title} — ${item.category}" class="arc-card-img" draggable="false" loading="lazy" />
-          <div class="arc-card-gradient"></div>
-          <div class="arc-card-badge-row">
-            <span class="arc-card-tag" style="background: ${item.accentColor}22; color: ${item.accentColor}; border: 1px solid ${item.accentColor}44;">
-              ${item.category}
-            </span>
-            <span class="arc-card-num-chip">${item.num}</span>
-          </div>
-        </div>
-        <div class="arc-card-content">
-          <div class="arc-card-head">
-            <h3 class="arc-card-title">${item.title}</h3>
-            <span class="arc-card-code" style="color: ${item.accentColor};">${item.code}</span>
-          </div>
-          <p class="arc-card-desc">${item.desc}</p>
-        </div>
-      </div>
-    `;
-
-    card.addEventListener('click', (e) => {
-      if (dragMoved) {
-        e.preventDefault();
-        e.stopPropagation();
-        return;
-      }
-      rotateToIndex(i);
-    });
-
-    stage.appendChild(card);
-    cardEls.push(card);
-  });
-
-  // State proxies & auto-drift state
-  const rotProxy = { r: 0 };
-  const tiltProxy = { t: 0 };
-  let raf = null;
-  let rotTween = null;
-  let tiltTween = null;
-
-  const AUTO_SPEED = 1.8; // degrees per second for gentle ambient drift
+  // Animation, motion & physics state
+  let currentAngle = 0;
+  let isTweening = false;
+  let tweenStart = 0;
+  let tweenFrom = 0;
+  let tweenTo = 0;
+  let tweenDuration = 600;
+  let inertiaVelocity = 0;
+  let guideDashOffset = 0;
   let isHovered = false;
   let isVisible = true;
-  let resumeAutoTime = 0;
   let lastNow = performance.now();
+  let raf = null;
 
-  const easeOutCubic = p => 1 - Math.pow(1 - p, 3);
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
 
-  function setTilt(value) {
-    tiltTween = {
-      from: tiltProxy.t,
-      to: value,
-      start: performance.now(),
-      dur: 480
-    };
-    ensureFrame();
+  function render() {
+    const maxVerticalY = geo.radius * geo.vertical;
+    let closestIndex = 0;
+    let minAngleDiff = 999999;
+
+    cards.forEach((card, index) => {
+      const angle = START_ANGLE + currentAngle + (index * stepAngle);
+      const pt = getOrbitPoint(angle, geo.radius, geo.horizontal, geo.vertical, geo.skewX, geo.skewY);
+
+      // Normalized difference to front focal point (START_ANGLE = 90 deg)
+      let diff = ((angle - START_ANGLE) % 360 + 540) % 360 - 180;
+      if (Math.abs(diff) < minAngleDiff) {
+        minAngleDiff = Math.abs(diff);
+        closestIndex = index;
+      }
+
+      // 3D perspective depth: pt.y ranges from -maxVerticalY to +maxVerticalY
+      const depthT = Math.max(0, Math.min(1, (pt.y + maxVerticalY) / (2 * maxVerticalY)));
+      const scale = 0.88 + 0.16 * depthT;
+      const opacity = 0.78 + 0.22 * depthT;
+      const zIndex = Math.round(100 + pt.y);
+
+      card.style.left = `calc(50% + ${pt.x.toFixed(2)}px)`;
+      card.style.top = `calc(50% + ${pt.y.toFixed(2)}px)`;
+      card.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
+      card.style.opacity = opacity.toFixed(3);
+      card.style.zIndex = zIndex;
+    });
+
+    // Mark active center/front card
+    cards.forEach((card, idx) => {
+      if (idx === closestIndex) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+
+    // Synchronize navigation chips
+    const activePillar = cards[closestIndex].getAttribute('data-pillar');
+    chips.forEach(chip => {
+      if (chip.getAttribute('data-pillar') === activePillar) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
+
+    // Animate guide dash offset in sync with orbit
+    if (guidePathEl) {
+      guidePathEl.style.strokeDashoffset = `${guideDashOffset.toFixed(2)}`;
+    }
   }
 
   function frame(now) {
     raf = null;
-    let active = false;
     const dt = Math.min((now - lastNow) / 1000, 0.05);
     lastNow = now;
 
-    if (rotTween) {
-      const p = Math.min(1, (now - rotTween.start) / rotTween.dur);
-      rotProxy.r = rotTween.from + (rotTween.to - rotTween.from) * easeOutCubic(p);
+    if (isTweening) {
+      const elapsed = now - tweenStart;
+      const p = Math.min(1, elapsed / tweenDuration);
+      currentAngle = tweenFrom + (tweenTo - tweenFrom) * easeOutCubic(p);
+      guideDashOffset = -currentAngle * (pathLength / 360);
       if (p >= 1) {
-        rotTween = null;
-        resumeAutoTime = now + 1200; // brief pause after tween completes
-      } else {
-        active = true;
+        isTweening = false;
+        currentAngle = tweenTo;
       }
-    } else if (!dragging && !isHovered && isVisible && now > resumeAutoTime) {
-      // Gentle ambient drift
-      rotProxy.r += AUTO_SPEED * dt;
-      active = true;
-    }
-
-    if (tiltTween) {
-      const p = Math.min(1, (now - tiltTween.start) / tiltTween.dur);
-      tiltProxy.t = tiltTween.from + (tiltTween.to - tiltTween.from) * easeOutCubic(p);
-      if (p >= 1) tiltTween = null;
-      else active = true;
+    } else if (dragging) {
+      // Handled in pointermove
+    } else {
+      // Inertia decay
+      if (Math.abs(inertiaVelocity) > 0.1) {
+        currentAngle += inertiaVelocity * dt;
+        guideDashOffset = -currentAngle * (pathLength / 360);
+        inertiaVelocity *= Math.exp(-4.2 * dt);
+      } else {
+        inertiaVelocity = 0;
+        // Ambient continuous orbital drift (matching Framer Orbitrail speed)
+        if (!isHovered && isVisible) {
+          const orbitalSpeed = geo.speed;
+          currentAngle += orbitalSpeed * dt;
+          guideDashOffset = -currentAngle * (pathLength / 360);
+        }
+      }
     }
 
     render();
 
-    if (active || (!dragging && !isHovered && isVisible)) {
+    if (isVisible) {
       raf = requestAnimationFrame(frame);
     }
   }
@@ -931,210 +924,152 @@ function initArcCardCarousel() {
     if (raf == null) raf = requestAnimationFrame(frame);
   }
 
-  function render() {
-    const rot = rotProxy.r;
-    const tlt = tiltProxy.t;
-    const period = count * geo.spacing;
-    const half = period / 2;
-    const fadeEnd = Math.min(88, half - 2.5);
-    const fadeStart = Math.max(10, fadeEnd - 18);
-
-    stage.style.top = `${geo.arcOffset + geo.radius}px`;
-
-    let closestIdx = 0;
-    let minTheta = 99999;
-
-    for (let i = 0; i < count; i++) {
-      const el = cardEls[i];
-      if (!el) continue;
-      const theta = wrapAngle(i * geo.spacing - rot, period);
-      el.style.transform = cardTransform(theta, tlt, geo.radius);
-      el.style.opacity = String(cardOpacity(theta, fadeStart, fadeEnd));
-      el.style.zIndex = String(Math.round(1000 - Math.abs(theta)));
-
-      const absT = Math.abs(theta);
-      if (absT < minTheta) {
-        minTheta = absT;
-        closestIdx = i;
-      }
-    }
-
-    // Mark active center card
-    cardEls.forEach((el, idx) => {
-      if (idx === closestIdx) el.classList.add('active');
-      else el.classList.remove('active');
-    });
-
-    // Synchronize navigation chips
-    const activeKey = items[closestIdx].key;
-    chips.forEach(chip => {
-      if (chip.getAttribute('data-pillar') === activeKey) {
-        chip.classList.add('active');
-      } else {
-        chip.classList.remove('active');
-      }
-    });
-  }
-
-  // Pointer drag interaction
+  // Pointer drag interaction with inertia
   let dragging = false;
-  let lastX = 0;
-  let downX = 0;
+  let startX = 0;
+  let startY = 0;
+  let lastAngle = 0;
+  let lastTime = 0;
   let dragMoved = false;
-  let lastT = 0;
-  let velocity = 0;
-  let dir = 0;
-  let target = rotProxy.r;
 
-  function onDown(e) {
-    dragging = true;
+  function getPointerAngle(e) {
+    const rect = container.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
     const clientX = e.clientX ?? (e.touches && e.touches[0].clientX) ?? 0;
-    lastX = clientX;
-    downX = clientX;
-    dragMoved = false;
-    lastT = performance.now();
-    velocity = 0;
-    dir = 0;
-    rotTween = null;
-    target = rotProxy.r;
-    container.style.cursor = 'grabbing';
+    const clientY = e.clientY ?? (e.touches && e.touches[0].clientY) ?? 0;
+    return Math.atan2(clientY - cy, clientX - cx) * (180 / Math.PI);
   }
 
-  function onMove(e) {
+  function onPointerDown(e) {
+    if (e.button !== undefined && e.button !== 0) return;
+    dragging = true;
+    dragMoved = false;
+    isTweening = false;
+    inertiaVelocity = 0;
+    container.classList.add('is-dragging');
+
+    startX = e.clientX ?? (e.touches && e.touches[0].clientX) ?? 0;
+    startY = e.clientY ?? (e.touches && e.touches[0].clientY) ?? 0;
+    lastAngle = getPointerAngle(e);
+    lastTime = performance.now();
+  }
+
+  function onPointerMove(e) {
     if (!dragging) return;
     const clientX = e.clientX ?? (e.touches && e.touches[0].clientX) ?? 0;
+    const clientY = e.clientY ?? (e.touches && e.touches[0].clientY) ?? 0;
+    const movedPx = Math.hypot(clientX - startX, clientY - startY);
+    if (movedPx > 6) dragMoved = true;
+
+    const angle = getPointerAngle(e);
     const now = performance.now();
-    const dx = clientX - lastX;
-    const dt = Math.max(now - lastT, 1);
+    const dt = Math.max((now - lastTime) / 1000, 0.001);
 
-    if (Math.abs(clientX - downX) > 6) dragMoved = true;
+    const angleDelta = getNormalizedAngleDelta(angle - lastAngle) * geo.sensitivity;
+    currentAngle += angleDelta;
+    inertiaVelocity = (angleDelta / dt) * 0.9;
+    guideDashOffset = -currentAngle * (pathLength / 360);
 
-    // Direction-aware 3D tilt
-    if (Math.abs(dx) > 1.2) {
-      const newDir = dx > 0 ? 1 : -1;
-      if (newDir !== dir) {
-        dir = newDir;
-        setTilt(dir * geo.tiltAmount);
-      }
-    }
-
-    const dDeg = -(dx / geo.radius) * (180 / Math.PI) * geo.sensitivity;
-    target += dDeg;
-    const instV = dDeg / (dt / 1000);
-    velocity = velocity * 0.6 + instV * 0.4;
-    rotProxy.r = target;
+    lastAngle = angle;
+    lastTime = now;
     render();
-
-    lastX = clientX;
-    lastT = now;
   }
 
-  function onUp() {
+  function onPointerUp() {
     if (!dragging) return;
     dragging = false;
-    dir = 0;
-    container.style.cursor = 'grab';
-    setTilt(0);
-
-    // Snap to nearest slot with velocity fling bias
-    const bias = Math.max(-geo.spacing, Math.min(geo.spacing, velocity * 0.08));
-    const snapped = Math.round((target + bias) / geo.spacing) * geo.spacing;
-    target = snapped;
-    rotTween = {
-      from: rotProxy.r,
-      to: snapped,
-      start: performance.now(),
-      dur: 560
-    };
+    container.classList.remove('is-dragging');
     ensureFrame();
   }
 
-  function rotateToIndex(idx) {
-    const period = count * geo.spacing;
-    const theta = wrapAngle(idx * geo.spacing - rotProxy.r, period);
-    const to = rotProxy.r + theta;
-    rotTween = {
-      from: rotProxy.r,
-      to: to,
-      start: performance.now(),
-      dur: 600
-    };
-    ensureFrame();
-  }
+  container.addEventListener('pointerdown', onPointerDown);
+  window.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('pointerup', onPointerUp);
+  window.addEventListener('pointercancel', onPointerUp);
 
-  function rotateToPillar(key) {
-    const period = count * geo.spacing;
-    let bestIdx = -1;
-    let minDiff = 999999;
-    items.forEach((item, i) => {
-      if (item.key === key) {
-        const theta = Math.abs(wrapAngle(i * geo.spacing - rotProxy.r, period));
-        if (theta < minDiff) {
-          minDiff = theta;
-          bestIdx = i;
-        }
-      }
-    });
-    if (bestIdx >= 0) rotateToIndex(bestIdx);
-  }
-
-  // Bind pointer & touch events
-  container.addEventListener('pointerdown', onDown);
-  window.addEventListener('pointermove', onMove);
-  window.addEventListener('pointerup', onUp);
-  window.addEventListener('pointercancel', onUp);
-
-  // Pause auto-drift on hover, resume after leaving
+  // Hover slowdown: pause / slow ambient drift when reading cards
   container.addEventListener('mouseenter', () => {
     isHovered = true;
   });
 
   container.addEventListener('mouseleave', () => {
     isHovered = false;
-    resumeAutoTime = performance.now() + 800;
     ensureFrame();
   });
 
-  container.addEventListener('touchstart', () => {
-    isHovered = true;
-  }, { passive: true });
-
-  container.addEventListener('touchend', () => {
-    isHovered = false;
-    resumeAutoTime = performance.now() + 1200;
+  // Smooth rotation to a specific card index
+  function rotateToIndex(targetIndex) {
+    isTweening = true;
+    tweenStart = performance.now();
+    tweenFrom = currentAngle;
+    const desiredBase = -targetIndex * stepAngle;
+    const period = 360;
+    const delta = ((desiredBase - (currentAngle % period)) + 540) % 360 - 180;
+    tweenTo = currentAngle + delta;
+    tweenDuration = 550;
+    inertiaVelocity = 0;
     ensureFrame();
+  }
+
+  // Card click to rotate into view
+  cards.forEach((card, index) => {
+    card.addEventListener('click', (e) => {
+      if (dragMoved) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+      rotateToIndex(index);
+    });
   });
 
-  // Bind navigation chips
-  chips.forEach(chip => {
+  // Navigation chips
+  chips.forEach((chip, chipIndex) => {
     chip.addEventListener('click', (e) => {
       e.preventDefault();
-      const key = chip.getAttribute('data-pillar');
-      resumeAutoTime = performance.now() + 2200;
-      rotateToPillar(key);
+      const targetPillar = chip.getAttribute('data-pillar');
+      const idx = cards.findIndex(c => c.getAttribute('data-pillar') === targetPillar);
+      if (idx !== -1) {
+        rotateToIndex(idx);
+      } else {
+        rotateToIndex(chipIndex);
+      }
     });
   });
 
   // Prev / Next button listeners
+  function getClosestIndex() {
+    let closestIndex = 0;
+    let minAngleDiff = 999999;
+    cards.forEach((_, index) => {
+      const angle = START_ANGLE + currentAngle + (index * stepAngle);
+      let diff = Math.abs(((angle - START_ANGLE) % 360 + 540) % 360 - 180);
+      if (diff < minAngleDiff) {
+        minAngleDiff = diff;
+        closestIndex = index;
+      }
+    });
+    return closestIndex;
+  }
+
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-      const snapped = Math.round((rotProxy.r - geo.spacing) / geo.spacing) * geo.spacing;
-      resumeAutoTime = performance.now() + 2000;
-      rotTween = { from: rotProxy.r, to: snapped, start: performance.now(), dur: 500 };
-      ensureFrame();
+      const cur = getClosestIndex();
+      const prevIdx = (cur - 1 + numCards) % numCards;
+      rotateToIndex(prevIdx);
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      const snapped = Math.round((rotProxy.r + geo.spacing) / geo.spacing) * geo.spacing;
-      resumeAutoTime = performance.now() + 2000;
-      rotTween = { from: rotProxy.r, to: snapped, start: performance.now(), dur: 500 };
-      ensureFrame();
+      const cur = getClosestIndex();
+      const nextIdx = (cur + 1) % numCards;
+      rotateToIndex(nextIdx);
     });
   }
 
-  // Optimize performance: run auto-drift only when section is visible
+  // Visibility observer for performance optimization
   if (window.IntersectionObserver) {
     const io = new IntersectionObserver((entries) => {
       isVisible = entries[0].isIntersecting;
@@ -1147,19 +1082,16 @@ function initArcCardCarousel() {
     io.observe(container);
   }
 
-  // Handle responsive resizing
+  // Responsive resizing
   function onResize() {
     geo = getGeometry();
-    cardEls.forEach(card => {
-      card.style.width = `${geo.cardWidth}px`;
-      card.style.height = `${geo.cardHeight}px`;
-    });
+    updateGuideSvg();
     render();
   }
 
   window.addEventListener('resize', onResize);
 
-  // Initial render & launch auto-drift frame
+  // Initial render & run animation frame
   render();
   ensureFrame();
 }
