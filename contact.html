@@ -99,205 +99,80 @@
   </section>
 
   <!-- ========================================================================
-       Dual Dynamic Application & Scoping Form
+       Direct Contact & Regional Hubs
        ======================================================================== -->
   <section class="section-spacing-sm bg-canvas">
-    <div class="container">
-      <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(2rem, 4vw, 4rem); align-items: flex-start;" class="reveal">
+    <div class="container container-narrow">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: stretch;" class="reveal">
         
-        <!-- Left: Form Container -->
-        <div style="background: var(--surface-white); border: 1px solid var(--border-hairline); border-radius: var(--radius-xl); padding: clamp(1.75rem, 4vw, 3rem); box-shadow: var(--shadow-card);">
-          
-          <div class="form-tab-switcher">
-            <button type="button" class="form-tab-btn active" data-tab="institutional">
-              Hire Network (Institutions)
-            </button>
-            <button type="button" class="form-tab-btn" data-tab="researcher">
-              Join Network (Researchers)
-            </button>
-          </div>
-
-          <!-- Institutional Scoping Form Pane -->
-          <div id="form-pane-institutional">
-            <form data-locana-form="institutional">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="inst-name">Organization / Institution *</label>
-                  <input type="text" id="inst-name" class="form-control" placeholder="e.g. World Bank, Gates Fdn, AI Lab" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="inst-contact">Your Full Name *</label>
-                  <input type="text" id="inst-contact" class="form-control" placeholder="Dr. / Ms. / Mr. Name" required>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="inst-email">Official Institutional Email *</label>
-                  <input type="email" id="inst-email" class="form-control" placeholder="name@organization.org" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="inst-phone">Direct Phone / WhatsApp *</label>
-                  <input type="tel" id="inst-phone" class="form-control" placeholder="+91 98765 43210" required>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="inst-vertical">Primary Service Vertical *</label>
-                  <select id="inst-vertical" class="form-control" required>
-                    <option value="decision_intelligence">Decision Intelligence & Impact Evaluation</option>
-                    <option value="vernacular_ai">Vernacular AI Voice / Text / Image Data</option>
-                    <option value="geospatial">Geospatial & Environmental Ground-Truthing</option>
-                    <option value="credit_risk">Rural Credit & PMFBY Yield Assessment</option>
-                    <option value="digital_inclusion">Digital Inclusion & DPI Adoption</option>
-                    <option value="skilling">Frontline Skilling & Capacity Systems</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="inst-samples">Target Sample / Scope *</label>
-                  <input type="text" id="inst-samples" class="form-control" placeholder="e.g. 3,500 Households / 20 Districts" required>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="inst-geography">Target States & Districts</label>
-                <input type="text" id="inst-geography" class="form-control" placeholder="e.g. Bihar (4 districts), Odisha (3 districts)">
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="inst-brief">Project Brief & Special Methodological Requirements</label>
-                <textarea id="inst-brief" class="form-control" placeholder="Describe objectives, desired timeline, instrument length, or language dialects needed..."></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-                <span>Submit RFP / Request Deployment Quote</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </button>
-              <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem;">
-                Protected by strict Non-Disclosure Protocol. Deployment quote returned in 48 hours.
-              </p>
-            </form>
-          </div>
-
-          <!-- Field Researcher Application Pane -->
-          <div id="form-pane-researcher" style="display: none;">
-            <form data-locana-form="researcher">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="res-name">Full Name *</label>
-                  <input type="text" id="res-name" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="res-phone">WhatsApp Number *</label>
-                  <input type="tel" id="res-phone" class="form-control" placeholder="+91 98765 43210" required>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="res-email">Email Address *</label>
-                  <input type="email" id="res-email" class="form-control" placeholder="yourname@gmail.com" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="res-tier">Target Certification Tier *</label>
-                  <select id="res-tier" class="form-control" required>
-                    <option value="basic">1. Basic (Free Orientation)</option>
-                    <option value="economy">2. Economy (₹99 · 100% Fee-Back)</option>
-                    <option value="silver">3. Silver Multi-Skill (₹499 · 100% Fee-Back)</option>
-                    <option value="gold" selected>4. Gold CASP Supervisor (₹999 · 100% Fee-Back)</option>
-                    <option value="diamond">5. Diamond Manager (₹1,499 · 100% Fee-Back)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="res-state">Home State *</label>
-                  <input type="text" id="res-state" class="form-control" placeholder="e.g. Maharashtra / Karnataka" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="res-district">Home District *</label>
-                  <input type="text" id="res-district" class="form-control" placeholder="e.g. Kolhapur / Belagavi" required>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="res-languages">Languages & Dialects Spoken Fluently *</label>
-                <input type="text" id="res-languages" class="form-control" placeholder="e.g. Marathi (Ahirani dialect), Hindi, English" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="res-experience">Prior Field Experience / Devices Used</label>
-                <textarea id="res-experience" class="form-control" placeholder="Mention past surveys, CAPI tools used (ODK/Kobo/SurveyCTO), or community work done..."></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-ochre btn-lg" style="width: 100%;">
-                <span>Submit Researcher Application</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </button>
-              <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem;">
-                Remember: Enrollment fee is 100% credited back on your 1st paid, QC-passed assignment!
-              </p>
-            </form>
-          </div>
-
-        </div>
-
-        <!-- Right: Regional Hubs & Scoping Team -->
-        <div>
-          <div style="background: var(--surface-white); border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem;">
+        <!-- Institutional Scoping Desk -->
+        <div style="background: var(--surface-white); border: 1px solid var(--border-hairline); border-radius: var(--radius-xl); padding: clamp(1.75rem, 3vw, 2.5rem); box-shadow: var(--shadow-card); display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
             <div class="kicker">Direct Contact</div>
-            <h3 style="font-size: 1.25rem; color: var(--ink-900); margin-bottom: 1.25rem;">Institutional Scoping Desk</h3>
+            <h3 style="font-size: 1.35rem; color: var(--ink-900); margin-bottom: 1rem;">Institutional Scoping Desk</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.6; margin-bottom: 2rem;">
+              Connect directly with our central deployment leadership to commission multi-state field studies, request baseline/endline scoping, or discuss custom field intelligence deployments.
+            </p>
             
-            <div style="display: flex; flex-direction: column; gap: 1.25rem; font-size: 0.875rem;">
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 0.9375rem;">
               <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--emerald-50); color: var(--emerald-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--emerald-50); color: var(--emerald-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
                 <div>
-                  <strong style="color: var(--ink-900); display: block;">Central Coordination Email</strong>
-                  <a href="mailto:contact@locana.network" style="color: var(--emerald-600); font-family: var(--font-mono);">contact@locana.network</a>
+                  <strong style="color: var(--ink-900); display: block; margin-bottom: 0.25rem;">Central Coordination Email</strong>
+                  <a href="mailto:contact@locana.network" style="color: var(--emerald-600); font-family: var(--font-mono); font-size: 1rem; font-weight: 600;">contact@locana.network</a>
                 </div>
               </div>
 
               <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--emerald-50); color: var(--emerald-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--emerald-50); color: var(--emerald-600); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
                 <div>
-                  <strong style="color: var(--ink-900); display: block;">Response Commitment</strong>
-                  <span style="color: var(--text-secondary);">Prompt turnaround on scoping parameters and operational estimates.</span>
+                  <strong style="color: var(--ink-900); display: block; margin-bottom: 0.25rem;">Response Commitment</strong>
+                  <span style="color: var(--text-secondary); line-height: 1.5;">Prompt turnaround on scoping parameters, sampling design, and operational estimates.</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Regional Hubs -->
-          <div style="background: var(--ink-900); color: #FFFFFF; border-radius: var(--radius-lg); padding: 2rem;">
-            <div class="kicker kicker-white" style="margin-bottom: 0.5rem;">Regional Hubs</div>
-            <h4 style="font-size: 1.125rem; color: #FFFFFF; margin-bottom: 1.25rem;">National Coordination Cells</h4>
+          <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-hairline);">
+            <a href="mailto:contact@locana.network?subject=Locana%20Deployment%20Inquiry" class="btn btn-primary" style="width: 100%; justify-content: center;">
+              <span>Email Deployment Desk</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </div>
+        </div>
 
-            <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.8125rem; color: rgba(244,250,247,0.8);">
-              <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
-                <strong style="color: #FFFFFF; display: block;">North & Central Cell:</strong>
+        <!-- Regional Hubs -->
+        <div style="background: var(--ink-900); color: #FFFFFF; border-radius: var(--radius-xl); padding: clamp(1.75rem, 3vw, 2.5rem); display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="kicker kicker-white" style="margin-bottom: 0.5rem;">Regional Hubs</div>
+            <h4 style="font-size: 1.35rem; color: #FFFFFF; margin-bottom: 1rem;">National Coordination Cells</h4>
+            <p style="color: rgba(244,250,247,0.7); font-size: 0.875rem; line-height: 1.5; margin-bottom: 1.75rem;">
+              Decentralized operational commands coordinating verified field networks across 700+ districts:
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 1.25rem; font-size: 0.875rem; color: rgba(244,250,247,0.85);">
+              <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.85rem;">
+                <strong style="color: #FFFFFF; display: block; font-size: 0.9375rem; margin-bottom: 0.25rem;">North & Central Cell:</strong>
                 <span>New Delhi & Lucknow Hubs (Serving UP, Bihar, MP, Rajasthan)</span>
               </div>
-              <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
-                <strong style="color: #FFFFFF; display: block;">South & Peninsular Cell:</strong>
+              <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.85rem;">
+                <strong style="color: #FFFFFF; display: block; font-size: 0.9375rem; margin-bottom: 0.25rem;">South & Peninsular Cell:</strong>
                 <span>Bengaluru & Hyderabad Hubs (Serving KA, TN, TG, AP, KL)</span>
               </div>
-              <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
-                <strong style="color: #FFFFFF; display: block;">West & Coastal Cell:</strong>
+              <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.85rem;">
+                <strong style="color: #FFFFFF; display: block; font-size: 0.9375rem; margin-bottom: 0.25rem;">West & Coastal Cell:</strong>
                 <span>Mumbai & Pune Hubs (Serving Maharashtra & Gujarat)</span>
               </div>
               <div>
-                <strong style="color: #FFFFFF; display: block;">East & Northeast Cell:</strong>
+                <strong style="color: #FFFFFF; display: block; font-size: 0.9375rem; margin-bottom: 0.25rem;">East & Northeast Cell:</strong>
                 <span>Bhubaneswar & Guwahati Hubs (Serving WB, OD, JH & NE)</span>
               </div>
             </div>
           </div>
-
         </div>
 
       </div>
@@ -335,11 +210,11 @@
         <!-- FAQ 2 -->
         <div class="faq-item">
           <div class="faq-header">
-            <h4>How does the 100% Fee-Back Guarantee work for researchers?</h4>
+            <h4>How are field professionals compensated on Locana assignments?</h4>
             <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </div>
           <div class="faq-body">
-            Locana does not operate as an extractive course seller. Any enrollment fee paid (₹99 for Economy, ₹499 for Silver, ₹999 for Gold CASP, ₹1,499 for Diamond) is automatically credited back on top of your earnings on your very first paid, quality-passed project assignment.
+            Field professionals receive transparent day-rates based on role complexity and verified district assignments, with guaranteed prompt disbursement directly to their bank accounts following quality-audited completion.
           </div>
         </div>
 

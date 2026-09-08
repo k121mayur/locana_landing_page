@@ -27,12 +27,12 @@ function initTierCalculator() {
   if (!daysSlider || !tierSelect || !monthlyEarningsEl) return;
 
   const tierRates = {
-    'basic': { rate: 600, name: 'Basic (Entry Level)', fee: 0 },
-    'economy': { rate: 850, name: 'Economy Certified (₹99)', fee: 99 },
-    'silver': { rate: 1100, name: 'Silver (₹499)', fee: 499 },
-    'gold': { rate: 1350, name: 'Gold CASP (₹999)', fee: 999 },
-    'diamond': { rate: 1750, name: 'Diamond Manager (₹1,499)', fee: 1499 },
-    'platinum': { rate: 2200, name: 'Platinum Fellow (Merit)', fee: 0 }
+    'basic': { rate: 600, name: 'Basic (Entry Level)' },
+    'economy': { rate: 850, name: 'Economy Certified' },
+    'silver': { rate: 1100, name: 'Silver Multi-Skill' },
+    'gold': { rate: 1350, name: 'Gold CASP Supervisor' },
+    'diamond': { rate: 1750, name: 'Diamond Project Manager' },
+    'platinum': { rate: 2200, name: 'Platinum Fellow (Merit)' }
   };
 
   function updateCalculations() {
@@ -50,15 +50,10 @@ function initTierCalculator() {
     if (annualEarningsEl) annualEarningsEl.textContent = `₹${annualTotal.toLocaleString()}`;
 
     if (feebackStatusEl) {
-      if (tierData.fee > 0) {
-        feebackStatusEl.innerHTML = `
-          <span class="badge badge-emerald">100% Fee-Back Eligible</span>
-          <p class="calc-micro-note">Your ₹${tierData.fee} enrollment fee is credited back on your 1st QC-approved assignment.</p>
-        `;
-      } else if (tierKey === 'basic') {
-        feebackStatusEl.innerHTML = `<span class="badge badge-outline">Free Enrollment</span>`;
-      } else {
+      if (tierKey === 'platinum') {
         feebackStatusEl.innerHTML = `<span class="badge badge-ochre">Top Tier + Revenue Share</span>`;
+      } else {
+        feebackStatusEl.innerHTML = `<span class="badge badge-emerald">Verified Pay Band</span>`;
       }
     }
   }
