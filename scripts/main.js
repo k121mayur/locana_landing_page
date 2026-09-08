@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounterUp();
   initFaqAccordion();
   initPlatformFilamentFlower();
-  initWorkflowToggle();
   initOrbitrailCarousel();
   initSmoothScroll();
 });
@@ -663,19 +662,6 @@ function initPlatformFilamentFlower() {
   updateDetails('ground-truth');
 }
 
-/* ==========================================================================
-   7. How Locana Works — Ground Truth Workflow Accordion
-   ========================================================================== */
-function initWorkflowToggle() {
-  const toggleBtn = document.getElementById('gt-accordion-toggle');
-  const box = document.getElementById('gt-accordion');
-  if (!toggleBtn || !box) return;
-
-  toggleBtn.addEventListener('click', () => {
-    const isExpanded = box.classList.toggle('is-expanded');
-    toggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-  });
-}
 
 /* ==========================================================================
    8. Locana Local Node — Framer Orbitrail Carousel Component

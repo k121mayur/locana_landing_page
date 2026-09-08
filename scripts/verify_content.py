@@ -9,15 +9,12 @@ def verify():
     sections = [
         ('01 Hero', 'hero'),
         ('02 Challenge', 'the-challenge'),
-        ('03 What Is Locana', 'what-is-locana'),
         ('04 Platform Wheel', 'platform-wheel'),
+        ('03 What Is Locana', 'what-is-locana'),
         ('05 Who We Connect', 'who-we-connect'),
-        ('06 Capabilities', 'services-capabilities'),
-        ('07 How It Works', 'how-it-works'),
         ('08 Local Node', 'local-node'),
         ('09 Why Trust Us', 'why-trust-us'),
         ('10 Numbers', 'numbers-metrics'),
-        ('11 Impact', 'our-impact'),
         ('12 Ready CTA', 'ready-cta')
     ]
 
@@ -69,7 +66,7 @@ def verify():
     print('PASS: Zero prohibited/unverified absolute claims found across all pages')
 
     # 5. Core Numbers check
-    numbers = ['2,100+', '225+', '25+', '150+']
+    numbers = ['2,100+', '18+', '27+', '780+', '150+']
     for n in numbers:
         if n not in html:
             print(f'FAIL: Metric "{n}" not found in index.html')
