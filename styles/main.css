@@ -1680,8 +1680,64 @@ h6 {
 /* ==========================================================================
    Orbitrail Carousel — Framer Component Integration
    (https://framer.com/m/OrbitrailCarousel-3Z5nfB.js@nHEmjPvyiUtKJ2GbRnrG)
-   Seamless On-Page Elliptical Orbital Carousel with Core Anchor & Physics
+   Seamless On-Page Elliptical Orbital Carousel with Core Anchor & Mountain Scenery
    ========================================================================== */
+#local-node.local-node-section,
+#local-node {
+  position: relative;
+  background-image: 
+    linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.90) 0%, 
+      rgba(255, 255, 255, 0.35) 25%, 
+      rgba(255, 255, 255, 0.12) 55%, 
+      rgba(255, 255, 255, 0.35) 85%, 
+      rgba(255, 255, 255, 0.65) 100%
+    ),
+    url('../assets/images/local_node_bg.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Foreground Leaves — Pure Static Framing (Zero Motion/Animation) */
+.local-node-parallax-leaves {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  user-select: none;
+  -webkit-user-select: none;
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+.local-node-parallax-leaves.leaves-left {
+  bottom: 0;
+  left: 0;
+  width: clamp(280px, 32vw, 480px);
+  max-width: 520px;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+}
+
+.local-node-parallax-leaves.leaves-right {
+  bottom: 0;
+  right: 0;
+  width: clamp(260px, 30vw, 440px);
+  max-width: 480px;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+}
+
+.local-node-parallax-leaves .leaves-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+
 .orbitrail-wrapper {
   position: relative;
   width: 100%;
@@ -1722,9 +1778,9 @@ h6 {
 }
 
 .orbitrail-guide-svg path {
-  stroke: rgba(23, 62, 154, 0.2);
-  stroke-width: 1.5;
-  stroke-dasharray: 6 8;
+  stroke: rgba(186, 210, 238, 0.85);
+  stroke-width: 1.75;
+  stroke-dasharray: 5 7;
   fill: none;
   vector-effect: non-scaling-stroke;
 }
@@ -1735,8 +1791,8 @@ h6 {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 145px;
-  height: 145px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1747,26 +1803,26 @@ h6 {
 
 .orbitrail-core-pulse {
   position: absolute;
-  inset: -12px;
+  inset: -14px;
   border-radius: 50%;
-  border: 1.5px solid rgba(23, 62, 154, 0.16);
+  border: 1.5px solid rgba(23, 62, 154, 0.2);
   animation: orbitrailPulse 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .orbitrail-core-rings {
   position: absolute;
-  inset: -5px;
+  inset: -6px;
   border-radius: 50%;
-  border: 1px dashed rgba(0, 140, 122, 0.32);
+  border: 1.5px dashed rgba(0, 140, 122, 0.36);
   animation: orbitrailSpin 32s linear infinite;
 }
 
 .orbitrail-core-badge {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 124px;
+  height: 124px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #0B2B6B 0%, #173E9A 55%, #008C7A 100%);
+  background: radial-gradient(circle at 35% 30%, #1742A6 0%, #0C2866 70%, #071942 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1774,19 +1830,18 @@ h6 {
   text-align: center;
   color: #FFFFFF;
   padding: 0.65rem;
-  box-shadow: 0 14px 32px rgba(11, 43, 107, 0.25), 0 0 0 1.5px rgba(255, 255, 255, 0.22) inset;
+  box-shadow: 0 16px 36px rgba(7, 25, 66, 0.38), 0 0 0 3.5px rgba(255, 255, 255, 0.95), 0 0 0 5.5px rgba(23, 62, 154, 0.18);
   pointer-events: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .orbitrail-core-badge:hover {
-  transform: scale(1.04);
-  box-shadow: 0 18px 40px rgba(11, 43, 107, 0.35), 0 0 22px rgba(0, 140, 122, 0.28);
+  transform: scale(1.05);
+  box-shadow: 0 20px 44px rgba(7, 25, 66, 0.45), 0 0 0 4px rgba(255, 255, 255, 1), 0 0 24px rgba(23, 62, 154, 0.35);
 }
 
 .orbitrail-core-icon {
-  color: #6EE7B7;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1816,11 +1871,11 @@ h6 {
 .orbitrail-core-sub {
   font-family: var(--font-mono);
   font-size: 0.5625rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0.02em;
 }
 
-/* Orbital Stage & Compact Cards */
+/* Orbital Stage & Cards */
 .orbitrail-stage {
   position: absolute;
   inset: 0;
@@ -1835,13 +1890,15 @@ h6 {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 215px;
-  height: 136px;
+  width: 220px;
+  min-height: 135px;
   pointer-events: auto;
   transform-origin: center center;
-  will-change: transform, opacity;
+  will-change: transform;
   cursor: pointer;
-  transition: box-shadow 0.25s ease, filter 0.25s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  contain: layout style;
 }
 
 .orbitrail-card-inner {
@@ -1849,40 +1906,41 @@ h6 {
   width: 100%;
   height: 100%;
   background: #FFFFFF;
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 0.75rem 0.85rem;
-  border: 1.5px solid rgba(226, 232, 240, 0.88);
-  box-shadow: 0 10px 24px -6px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  justify-content: flex-start;
+  padding: 0.9rem 1.05rem;
+  border: 2px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 10px 26px -4px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .orbitrail-card:hover .orbitrail-card-inner {
-  transform: translateY(-4px);
   border-color: var(--card-accent, #2563EB);
-  box-shadow: 0 16px 32px -6px rgba(15, 23, 42, 0.14), 0 0 0 1.5px var(--card-accent, #2563EB);
+  box-shadow: 0 16px 32px -6px rgba(15, 23, 42, 0.12), 0 0 0 1px var(--card-accent, #2563EB);
 }
 
 .orbitrail-card.active .orbitrail-card-inner {
-  border-color: var(--card-accent, #2563EB);
-  box-shadow: 0 18px 36px -6px rgba(15, 23, 42, 0.16), 0 0 0 2px var(--card-accent, #2563EB), 0 0 22px rgba(37, 99, 235, 0.12);
+  border-color: var(--card-accent, #6D43B5);
+  box-shadow: 0 18px 36px -6px rgba(15, 23, 42, 0.16), 0 0 0 1px var(--card-accent, #6D43B5), 0 8px 24px var(--card-accent-glow, rgba(109, 67, 181, 0.22));
 }
 
 .orbitrail-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.45rem;
 }
 
 .orbitrail-pill-badge {
   font-family: var(--font-mono);
   font-size: 0.625rem;
   font-weight: 700;
-  padding: 0.15rem 0.5rem;
+  padding: 0.18rem 0.55rem;
   border-radius: var(--radius-full);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1893,28 +1951,54 @@ h6 {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 800;
-  padding: 0.12rem 0.45rem;
+  padding: 0.15rem 0.45rem;
   border-radius: var(--radius-full);
   border: 1px solid;
+}
+
+/* Pillar Specific Badges */
+.badge-p1, .chip-p1 {
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border-color: #DBEAFE;
+}
+.badge-p2, .chip-p2 {
+  background: #F0FDF4;
+  color: #15803D;
+  border-color: #DCFCE7;
+}
+.badge-p3, .chip-p3 {
+  background: #F0FDFA;
+  color: #0F766E;
+  border-color: #CCFBF1;
+}
+.badge-p4, .chip-p4 {
+  background: #FFF7ED;
+  color: #C2410C;
+  border-color: #FFEDD5;
+}
+.badge-p5, .chip-p5 {
+  background: #FAF5FF;
+  color: #6D28D9;
+  border-color: #F3E8FF;
 }
 
 .orbitrail-card-title {
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 700;
-  color: var(--slate-900);
-  margin: 0 0 0.35rem 0;
-  line-height: 1.2;
+  color: #0F172A;
+  margin: 0 0 0.45rem 0;
+  line-height: 1.25;
 }
 
 .orbitrail-meaning-box {
-  background: rgba(248, 250, 252, 0.95);
-  border: 1px solid rgba(226, 232, 240, 0.7);
-  border-radius: 8px;
-  padding: 0.45rem 0.6rem;
+  background: transparent;
+  border: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.12rem;
+  gap: 0.15rem;
 }
 
 .orbitrail-meaning-label {
@@ -1923,20 +2007,21 @@ h6 {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--card-accent, var(--brand-blue));
-  display: block;
+  margin-bottom: 0.1rem;
 }
+
+.label-p1 { color: #1D4ED8; }
+.label-p2 { color: #15803D; }
+.label-p3 { color: #0F766E; }
+.label-p4 { color: #C2410C; }
+.label-p5 { color: #6D28D9; }
 
 .orbitrail-meaning-text {
   font-size: 0.75rem;
-  line-height: 1.35;
-  color: var(--slate-700);
+  line-height: 1.4;
+  color: #475569;
   margin: 0;
   font-weight: 500;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 /* Nav chevron buttons */
@@ -1947,9 +2032,9 @@ h6 {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid var(--border-light);
-  color: var(--slate-700);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  color: #475569;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1963,18 +2048,18 @@ h6 {
 
 .orbitrail-nav-btn:hover {
   background: #FFFFFF;
-  color: var(--blue-600);
-  border-color: var(--blue-500);
+  color: #1D4ED8;
+  border-color: #93C5FD;
   transform: translateY(-50%) scale(1.08);
   box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
 }
 
 .orbitrail-nav-prev {
-  left: 10px;
+  left: 20px;
 }
 
 .orbitrail-nav-next {
-  right: 10px;
+  right: 20px;
 }
 
 /* Bottom footer of carousel */
@@ -2025,10 +2110,10 @@ h6 {
 
 .orbitrail-eyebrow {
   font-family: var(--font-display);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--slate-700);
+  letter-spacing: 0.08em;
+  color: #334155;
   text-transform: uppercase;
 }
 
@@ -2168,29 +2253,34 @@ h6 {
 }
 
 .wheel-chip {
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 1.15rem;
   border-radius: var(--radius-full);
   font-size: 0.8125rem;
   font-weight: 600;
   font-family: var(--font-display);
-  background: #FFFFFF;
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(203, 213, 225, 0.85);
   color: var(--slate-700);
   cursor: pointer;
   transition: all var(--transition-fast);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
 .wheel-chip:hover {
-  border-color: var(--blue-500);
-  color: var(--blue-600);
-  background: var(--blue-50);
+  border-color: #3B82F6;
+  color: #1D4ED8;
+  background: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.12);
 }
 
 .wheel-chip.active {
-  background: var(--blue-600);
-  border-color: var(--blue-600);
+  background: #1D63EA;
+  border-color: #1D63EA;
   color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 4px 14px rgba(29, 99, 234, 0.35);
 }
 
 .wheel-details-card {

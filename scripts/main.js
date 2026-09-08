@@ -702,7 +702,7 @@ function initOrbitrailCarousel() {
 
   const numCards = cards.length; // 5
   const stepAngle = 360 / numCards; // 72 deg
-  const START_ANGLE = 90; // 90 degrees places Pillar 1 at the bottom/front center
+  const START_ANGLE = 144; // 144 degrees places Pillar 1 at lower-left, 2 at upper-left, 3 at top, 4 at mid-right, 5 at lower-right
   const GUIDE_SEGMENTS = 96;
 
   function getOrbitPoint(angle, radius, horizontal, vertical, skewX, skewY) {
@@ -751,32 +751,32 @@ function initOrbitrailCarousel() {
     const w = window.innerWidth;
     if (w <= 640) {
       return {
-        radius: 175,
+        radius: 165,
         horizontal: 0.96,
         vertical: 0.80,
         skewX: 0,
         skewY: 0,
-        speed: 5.5,
+        speed: 4.2,
         sensitivity: 1.15
       };
     } else if (w <= 1024) {
       return {
-        radius: 260,
-        horizontal: 1.28,
-        vertical: 0.68,
+        radius: 245,
+        horizontal: 1.30,
+        vertical: 0.65,
         skewX: 0,
         skewY: 0,
-        speed: 4.5,
+        speed: 3.4,
         sensitivity: 1.05
       };
     } else {
       return {
-        radius: 320,
-        horizontal: 1.42,
-        vertical: 0.64,
+        radius: 305,
+        horizontal: 1.48,
+        vertical: 0.62,
         skewX: 0,
         skewY: 0,
-        speed: 4.0,
+        speed: 2.8,
         sensitivity: 1.0
       };
     }
@@ -801,13 +801,13 @@ function initOrbitrailCarousel() {
     guidePathEl.setAttribute('d', `${guidePath} Z`);
 
     pathLength = getGuidePathLength(geo.radius, geo.horizontal, geo.vertical, geo.skewX, geo.skewY);
-    const seamlessGap = getSeamlessGuideGap(pathLength, 6, 8);
-    guidePathEl.setAttribute('stroke-dasharray', `6 ${seamlessGap.toFixed(2)}`);
+    const seamlessGap = getSeamlessGuideGap(pathLength, 5, 7);
+    guidePathEl.setAttribute('stroke-dasharray', `5 ${seamlessGap.toFixed(2)}`);
   }
 
   updateGuideSvg();
 
-  // Animation, motion & physics state
+  // Animation, motion & continuous physics state
   let currentAngle = 0;
   let isTweening = false;
   let tweenStart = 0;
@@ -820,6 +820,7 @@ function initOrbitrailCarousel() {
   let isVisible = true;
   let lastNow = performance.now();
   let raf = null;
+  let lastActiveIndex = -1;
 
   function easeOutCubic(t) {
     return 1 - Math.pow(1 - t, 3);
@@ -834,54 +835,49 @@ function initOrbitrailCarousel() {
       const angle = START_ANGLE + currentAngle + (index * stepAngle);
       const pt = getOrbitPoint(angle, geo.radius, geo.horizontal, geo.vertical, geo.skewX, geo.skewY);
 
-      // Normalized difference to front focal point (START_ANGLE = 90 deg)
-      let diff = ((angle - START_ANGLE) % 360 + 540) % 360 - 180;
-      if (Math.abs(diff) < minAngleDiff) {
-        minAngleDiff = Math.abs(diff);
+      // 90 degrees is the bottom-front focal point closest to viewer
+      const diff = Math.abs(((angle - 90) % 360 + 540) % 360 - 180);
+      if (diff < minAngleDiff) {
+        minAngleDiff = diff;
         closestIndex = index;
       }
 
-      // 3D perspective depth: pt.y ranges from -maxVerticalY to +maxVerticalY
+      // 3D perspective depth
       const depthT = Math.max(0, Math.min(1, (pt.y + maxVerticalY) / (2 * maxVerticalY)));
       const scale = 0.88 + 0.16 * depthT;
-      const opacity = 0.78 + 0.22 * depthT;
+
+      // Pure hardware-accelerated GPU 3D transform — ZERO left/top layout changes!
+      card.style.transform = `translate3d(calc(-50% + ${pt.x.toFixed(2)}px), calc(-50% + ${pt.y.toFixed(2)}px), 0) scale(${scale.toFixed(3)})`;
+
       const zIndex = Math.round(100 + pt.y);
-
-      card.style.left = `calc(50% + ${pt.x.toFixed(2)}px)`;
-      card.style.top = `calc(50% + ${pt.y.toFixed(2)}px)`;
-      card.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
-      card.style.opacity = opacity.toFixed(3);
-      card.style.zIndex = zIndex;
-    });
-
-    // Mark active center/front card
-    cards.forEach((card, idx) => {
-      if (idx === closestIndex) {
-        card.classList.add('active');
-      } else {
-        card.classList.remove('active');
+      if (card._lastZIndex !== zIndex) {
+        card._lastZIndex = zIndex;
+        card.style.zIndex = zIndex;
       }
     });
 
-    // Synchronize navigation chips
-    const activePillar = cards[closestIndex].getAttribute('data-pillar');
-    chips.forEach(chip => {
-      if (chip.getAttribute('data-pillar') === activePillar) {
-        chip.classList.add('active');
-      } else {
-        chip.classList.remove('active');
-      }
-    });
+    // Mark active front/focal card only when changed
+    if (closestIndex !== lastActiveIndex) {
+      lastActiveIndex = closestIndex;
+      cards.forEach((card, idx) => {
+        card.classList.toggle('active', idx === closestIndex);
+      });
 
-    // Animate guide dash offset in sync with orbit
+      // Synchronize navigation chips with the front card
+      const activePillar = cards[closestIndex].getAttribute('data-pillar');
+      chips.forEach(chip => {
+        chip.classList.toggle('active', chip.getAttribute('data-pillar') === activePillar);
+      });
+    }
+
     if (guidePathEl) {
-      guidePathEl.style.strokeDashoffset = `${guideDashOffset.toFixed(2)}`;
+      guidePathEl.style.strokeDashoffset = `${guideDashOffset.toFixed(1)}`;
     }
   }
 
   function frame(now) {
     raf = null;
-    const dt = Math.min((now - lastNow) / 1000, 0.05);
+    const dt = Math.min(Math.max((now - lastNow) / 1000, 0.001), 0.033);
     lastNow = now;
 
     if (isTweening) {
@@ -896,14 +892,13 @@ function initOrbitrailCarousel() {
     } else if (dragging) {
       // Handled in pointermove
     } else {
-      // Inertia decay
       if (Math.abs(inertiaVelocity) > 0.1) {
         currentAngle += inertiaVelocity * dt;
         guideDashOffset = -currentAngle * (pathLength / 360);
         inertiaVelocity *= Math.exp(-4.2 * dt);
       } else {
         inertiaVelocity = 0;
-        // Ambient continuous orbital drift (matching Framer Orbitrail speed)
+        // Ambient continuous orbital drift (keeps carousel in continuous motion)
         if (!isHovered && isVisible) {
           const orbitalSpeed = geo.speed;
           currentAngle += orbitalSpeed * dt;
@@ -988,7 +983,7 @@ function initOrbitrailCarousel() {
   window.addEventListener('pointerup', onPointerUp);
   window.addEventListener('pointercancel', onPointerUp);
 
-  // Hover slowdown: pause / slow ambient drift when reading cards
+  // Hover slowdown/pause: pause ambient drift when hovering cards to read
   container.addEventListener('mouseenter', () => {
     isHovered = true;
   });
@@ -998,16 +993,16 @@ function initOrbitrailCarousel() {
     ensureFrame();
   });
 
-  // Smooth rotation to a specific card index
+  // Smooth rotation to focus a specific card index at front (90 deg)
   function rotateToIndex(targetIndex) {
     isTweening = true;
     tweenStart = performance.now();
     tweenFrom = currentAngle;
-    const desiredBase = -targetIndex * stepAngle;
+    const desiredBase = (90 - START_ANGLE) - targetIndex * stepAngle;
     const period = 360;
     const delta = ((desiredBase - (currentAngle % period)) + 540) % 360 - 180;
     tweenTo = currentAngle + delta;
-    tweenDuration = 550;
+    tweenDuration = 600;
     inertiaVelocity = 0;
     ensureFrame();
   }
@@ -1030,11 +1025,7 @@ function initOrbitrailCarousel() {
       e.preventDefault();
       const targetPillar = chip.getAttribute('data-pillar');
       const idx = cards.findIndex(c => c.getAttribute('data-pillar') === targetPillar);
-      if (idx !== -1) {
-        rotateToIndex(idx);
-      } else {
-        rotateToIndex(chipIndex);
-      }
+      rotateToIndex(idx !== -1 ? idx : chipIndex);
     });
   });
 
@@ -1044,7 +1035,7 @@ function initOrbitrailCarousel() {
     let minAngleDiff = 999999;
     cards.forEach((_, index) => {
       const angle = START_ANGLE + currentAngle + (index * stepAngle);
-      let diff = Math.abs(((angle - START_ANGLE) % 360 + 540) % 360 - 180);
+      let diff = Math.abs(((angle - 90) % 360 + 540) % 360 - 180);
       if (diff < minAngleDiff) {
         minAngleDiff = diff;
         closestIndex = index;
@@ -1054,7 +1045,8 @@ function initOrbitrailCarousel() {
   }
 
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       const cur = getClosestIndex();
       const prevIdx = (cur - 1 + numCards) % numCards;
       rotateToIndex(prevIdx);
@@ -1062,7 +1054,8 @@ function initOrbitrailCarousel() {
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       const cur = getClosestIndex();
       const nextIdx = (cur + 1) % numCards;
       rotateToIndex(nextIdx);
@@ -1091,7 +1084,7 @@ function initOrbitrailCarousel() {
 
   window.addEventListener('resize', onResize);
 
-  // Initial render & run animation frame
+  // Initial render & run continuous animation frame
   render();
   ensureFrame();
 }

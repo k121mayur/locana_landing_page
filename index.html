@@ -1308,7 +1308,15 @@
        The fundamental operating unit of the network — combining local people,
        skills, technology, assets and trust.
        ======================================================================== -->
-  <section class="section-space bg-white" id="local-node">
+  <section class="section-space local-node-section" id="local-node">
+    <!-- Parallax Leaves Foreground Layers -->
+    <div class="local-node-parallax-leaves leaves-left" id="node-leaves-left" aria-hidden="true">
+      <img src="assets/images/leaves_parallax_left.png" alt="" class="leaves-img">
+    </div>
+    <div class="local-node-parallax-leaves leaves-right" id="node-leaves-right" aria-hidden="true">
+      <img src="assets/images/leaves_parallax_right.png" alt="" class="leaves-img">
+    </div>
+
     <div class="container container-wide">
 
       <div class="section-header center reveal">
@@ -1328,11 +1336,11 @@
       <!-- Navigation Chips for Quick Selection -->
       <div class="wheel-nav-chips reveal" id="node-chips-container"
         style="justify-content: center; margin-bottom: 2rem;">
-        <button class="wheel-chip active" data-pillar="people">Pillar 1 · People</button>
+        <button class="wheel-chip" data-pillar="people">Pillar 1 · People</button>
         <button class="wheel-chip" data-pillar="skills">Pillar 2 · Skills</button>
         <button class="wheel-chip" data-pillar="technology">Pillar 3 · Technology</button>
         <button class="wheel-chip" data-pillar="assets">Pillar 4 · Assets</button>
-        <button class="wheel-chip" data-pillar="trust">Pillar 5 · Trust</button>
+        <button class="wheel-chip active" data-pillar="trust">Pillar 5 · Trust</button>
       </div>
 
       <!-- Framer Orbitrail Carousel Component Integration (https://framer.com/m/OrbitrailCarousel-3Z5nfB.js@nHEmjPvyiUtKJ2GbRnrG) -->
@@ -1363,75 +1371,75 @@
           <div class="orbitrail-stage" id="orbitrail-stage" data-radial-carousel-slot="content">
             
             <!-- Pillar 1 - People -->
-            <div class="orbitrail-card active" data-pillar="people" data-index="0" style="--card-accent: #173E9A;">
+            <div class="orbitrail-card" data-pillar="people" data-index="0" style="--card-accent: #173E9A; --card-accent-glow: rgba(23, 62, 154, 0.25);">
               <div class="orbitrail-card-inner">
                 <div class="orbitrail-card-header">
-                  <span class="orbitrail-pill-badge" style="background: rgba(23, 62, 154, 0.1); color: #173E9A; border-color: rgba(23, 62, 154, 0.25);">Pillar 1</span>
-                  <span class="orbitrail-index-chip" style="color: #173E9A; background: rgba(23, 62, 154, 0.08); border-color: rgba(23, 62, 154, 0.2);">01</span>
+                  <span class="orbitrail-pill-badge badge-p1">Pillar 1</span>
+                  <span class="orbitrail-index-chip chip-p1">01</span>
                 </div>
-                <h3 class="orbitrail-card-title">Pillar 1 - People</h3>
+                <h3 class="orbitrail-card-title">Pillar 1 – People</h3>
                 <div class="orbitrail-meaning-box">
-                  <span class="orbitrail-meaning-label">Meaning</span>
+                  <span class="orbitrail-meaning-label label-p1">Meaning</span>
                   <p class="orbitrail-meaning-text">Local professionals with geographic and community familiarity.</p>
                 </div>
               </div>
             </div>
 
             <!-- Pillar 2 - Skills -->
-            <div class="orbitrail-card" data-pillar="skills" data-index="1" style="--card-accent: #2E9E4D;">
+            <div class="orbitrail-card" data-pillar="skills" data-index="1" style="--card-accent: #2E9E4D; --card-accent-glow: rgba(46, 158, 77, 0.25);">
               <div class="orbitrail-card-inner">
                 <div class="orbitrail-card-header">
-                  <span class="orbitrail-pill-badge" style="background: rgba(46, 158, 77, 0.1); color: #2E9E4D; border-color: rgba(46, 158, 77, 0.25);">Pillar 2</span>
-                  <span class="orbitrail-index-chip" style="color: #2E9E4D; background: rgba(46, 158, 77, 0.08); border-color: rgba(46, 158, 77, 0.2);">02</span>
+                  <span class="orbitrail-pill-badge badge-p2">Pillar 2</span>
+                  <span class="orbitrail-index-chip chip-p2">02</span>
                 </div>
-                <h3 class="orbitrail-card-title">Pillar 2 - Skills</h3>
+                <h3 class="orbitrail-card-title">Pillar 2 – Skills</h3>
                 <div class="orbitrail-meaning-box">
-                  <span class="orbitrail-meaning-label">Meaning</span>
+                  <span class="orbitrail-meaning-label label-p2">Meaning</span>
                   <p class="orbitrail-meaning-text">Domain, fieldwork, digital and service-specific capabilities.</p>
                 </div>
               </div>
             </div>
 
             <!-- Pillar 3 - Technology -->
-            <div class="orbitrail-card" data-pillar="technology" data-index="2" style="--card-accent: #008C7A;">
+            <div class="orbitrail-card" data-pillar="technology" data-index="2" style="--card-accent: #008C7A; --card-accent-glow: rgba(0, 140, 122, 0.25);">
               <div class="orbitrail-card-inner">
                 <div class="orbitrail-card-header">
-                  <span class="orbitrail-pill-badge" style="background: rgba(0, 140, 122, 0.1); color: #008C7A; border-color: rgba(0, 140, 122, 0.25);">Pillar 3</span>
-                  <span class="orbitrail-index-chip" style="color: #008C7A; background: rgba(0, 140, 122, 0.08); border-color: rgba(0, 140, 122, 0.2);">03</span>
+                  <span class="orbitrail-pill-badge badge-p3">Pillar 3</span>
+                  <span class="orbitrail-index-chip chip-p3">03</span>
                 </div>
-                <h3 class="orbitrail-card-title">Pillar 3 - Technology</h3>
+                <h3 class="orbitrail-card-title">Pillar 3 – Technology</h3>
                 <div class="orbitrail-meaning-box">
-                  <span class="orbitrail-meaning-label">Meaning</span>
+                  <span class="orbitrail-meaning-label label-p3">Meaning</span>
                   <p class="orbitrail-meaning-text">Mobile tools, communication, workflow, verification and reporting.</p>
                 </div>
               </div>
             </div>
 
             <!-- Pillar 4 - Assets -->
-            <div class="orbitrail-card" data-pillar="assets" data-index="3" style="--card-accent: #F28C28;">
+            <div class="orbitrail-card" data-pillar="assets" data-index="3" style="--card-accent: #F28C28; --card-accent-glow: rgba(242, 140, 40, 0.25);">
               <div class="orbitrail-card-inner">
                 <div class="orbitrail-card-header">
-                  <span class="orbitrail-pill-badge" style="background: rgba(242, 140, 40, 0.1); color: #F28C28; border-color: rgba(242, 140, 40, 0.25);">Pillar 4</span>
-                  <span class="orbitrail-index-chip" style="color: #F28C28; background: rgba(242, 140, 40, 0.08); border-color: rgba(242, 140, 40, 0.2);">04</span>
+                  <span class="orbitrail-pill-badge badge-p4">Pillar 4</span>
+                  <span class="orbitrail-index-chip chip-p4">04</span>
                 </div>
-                <h3 class="orbitrail-card-title">Pillar 4 - Assets</h3>
+                <h3 class="orbitrail-card-title">Pillar 4 – Assets</h3>
                 <div class="orbitrail-meaning-box">
-                  <span class="orbitrail-meaning-label">Meaning</span>
+                  <span class="orbitrail-meaning-label label-p4">Meaning</span>
                   <p class="orbitrail-meaning-text">Local access, mobility, devices, relationships and practical resources.</p>
                 </div>
               </div>
             </div>
 
             <!-- Pillar 5 - Trust -->
-            <div class="orbitrail-card" data-pillar="trust" data-index="4" style="--card-accent: #6D43B5;">
+            <div class="orbitrail-card active" data-pillar="trust" data-index="4" style="--card-accent: #6D43B5; --card-accent-glow: rgba(109, 67, 181, 0.25);">
               <div class="orbitrail-card-inner">
                 <div class="orbitrail-card-header">
-                  <span class="orbitrail-pill-badge" style="background: rgba(109, 67, 181, 0.1); color: #6D43B5; border-color: rgba(109, 67, 181, 0.25);">Pillar 5</span>
-                  <span class="orbitrail-index-chip" style="color: #6D43B5; background: rgba(109, 67, 181, 0.08); border-color: rgba(109, 67, 181, 0.2);">05</span>
+                  <span class="orbitrail-pill-badge badge-p5">Pillar 5</span>
+                  <span class="orbitrail-index-chip chip-p5">05</span>
                 </div>
-                <h3 class="orbitrail-card-title">Pillar 5 - Trust</h3>
+                <h3 class="orbitrail-card-title">Pillar 5 – Trust</h3>
                 <div class="orbitrail-meaning-box">
-                  <span class="orbitrail-meaning-label">Meaning</span>
+                  <span class="orbitrail-meaning-label label-p5">Meaning</span>
                   <p class="orbitrail-meaning-text">Community familiarity, ethical engagement and accountable execution.</p>
                 </div>
               </div>
