@@ -1647,8 +1647,8 @@ h2.section-title {
 
 /* Center Column: Locana Platform Wheel */
 .transformation-col-wheel {
-  flex: 1 1 380px;
-  max-width: 440px;
+  flex: 0 1 340px;
+  max-width: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1672,7 +1672,7 @@ h2.section-title {
 
 .wheel-hdr-title {
   font-family: var(--font-display, var(--font-sans, sans-serif));
-  font-size: clamp(1.4rem, 1.8vw, 1.65rem);
+  font-size: clamp(1.25rem, 1.6vw, 1.45rem);
   font-weight: 900;
   color: #041563;
   letter-spacing: -0.02em;
@@ -1690,7 +1690,7 @@ h2.section-title {
 
 .trans-wheel-graphic-wrap {
   width: 100%;
-  max-width: 385px;
+  max-width: 320px;
   position: relative;
   display: flex;
   justify-content: center;
